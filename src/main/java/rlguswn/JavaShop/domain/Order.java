@@ -23,7 +23,7 @@ public class Order {
     private OrderStatus status;
 
     @Column(nullable = false)
-    private BigDecimal total_price;
+    private BigDecimal totalPrice;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -34,10 +34,10 @@ public class Order {
     protected Order() {
     }
 
-    public Order(Member member, OrderStatus status, BigDecimal total_price) {
+    public Order(Member member, OrderStatus status, BigDecimal totalPrice) {
         this.member = member;
         this.status = status;
-        this.total_price = total_price;
+        this.totalPrice = totalPrice;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -65,12 +65,12 @@ public class Order {
         this.status = status;
     }
 
-    public BigDecimal getTotal_price() {
-        return total_price;
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotal_price(BigDecimal total_price) {
-        this.total_price = total_price;
+    public void setTotal_price(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public LocalDateTime getCreatedAt() {
