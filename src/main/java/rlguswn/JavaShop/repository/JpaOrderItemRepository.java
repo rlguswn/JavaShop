@@ -1,28 +1,41 @@
 package rlguswn.JavaShop.repository;
 
+import jakarta.persistence.EntityManager;
 import rlguswn.JavaShop.domain.OrderItem;
 
 import java.util.List;
 import java.util.Optional;
 
 public class JpaOrderItemRepository implements OrderItemRepository {
+
+    private final EntityManager em;
+
+    public JpaOrderItemRepository(EntityManager em) {
+        this.em = em;
+    }
+
     @Override
     public OrderItem save(OrderItem orderItem) {
-        return null;
+        em.persist(orderItem);
+        return orderItem;
     }
 
     @Override
     public Optional<OrderItem> findById(Long id) {
-        return Optional.empty();
+        OrderItem orderItem = em.find(OrderItem.class, id);
+        return Optional.ofNullable(orderItem);
     }
 
     @Override
-    public Optional<OrderItem> findByMemberId(Long memberId) {
-        return Optional.empty();
+    public List<OrderItem> findByOrderId(Long orderId) {
+        return em.createQuery("select o from OrderItem o where o.orderId = :orderId", OrderItem.class)
+                .setParameter("orderId", orderId)
+                .getResultList();
     }
 
     @Override
     public List<OrderItem> findAll() {
-        return List.of();
+        return em.createQuery("select o from OrderItem o", OrderItem.class)
+                .getResultList();
     }
 }
