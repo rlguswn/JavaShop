@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface CartItemRepository {
     CartItem save(CartItem cartItem);
     Optional<CartItem> findById(Long id);
-    Optional<CartItem> findByCartId(Long cartId);
+    List<CartItem> findByCartId(Long cartId);
     List<CartItem> findAll();
 }
