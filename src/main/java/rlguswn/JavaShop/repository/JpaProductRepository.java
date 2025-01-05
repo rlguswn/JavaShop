@@ -1,11 +1,13 @@
 package rlguswn.JavaShop.repository;
 
 import jakarta.persistence.EntityManager;
+import org.springframework.stereotype.Repository;
 import rlguswn.JavaShop.domain.Product;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class JpaProductRepository implements ProductRepository {
 
     private final EntityManager em;

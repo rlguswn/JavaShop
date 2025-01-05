@@ -1,11 +1,13 @@
 package rlguswn.JavaShop.repository;
 
 import jakarta.persistence.EntityManager;
+import org.springframework.stereotype.Repository;
 import rlguswn.JavaShop.domain.CartItem;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class JpaCartItemRepository implements CartItemRepository {
 
     private final EntityManager em;

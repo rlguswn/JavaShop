@@ -1,11 +1,13 @@
 package rlguswn.JavaShop.repository;
 
 import jakarta.persistence.EntityManager;
+import org.springframework.stereotype.Repository;
 import rlguswn.JavaShop.domain.CustomerOrder;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class JpaCustomerOrderRepository implements CustomerOrderRepository {
 
     private final EntityManager em;
