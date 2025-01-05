@@ -35,7 +35,7 @@ public class Member {
     private Cart cart;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders = new ArrayList<>();
+    private List<CustomerOrder> customerOrders = new ArrayList<>();
 
     protected Member() {
     }
@@ -113,11 +113,11 @@ public class Member {
         this.cart = cart;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<CustomerOrder> getCustomerOrders() {
+        return customerOrders;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setOrders(List<CustomerOrder> customerOrders) {
+        this.customerOrders = customerOrders;
     }
 }

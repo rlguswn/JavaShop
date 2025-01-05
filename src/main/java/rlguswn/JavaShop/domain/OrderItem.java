@@ -12,8 +12,8 @@ public class OrderItem {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+    @JoinColumn(name = "customer_order_id", nullable = false)
+    private CustomerOrder customerOrder;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
@@ -28,8 +28,8 @@ public class OrderItem {
     protected OrderItem() {
     }
 
-    public OrderItem(Order order, Product product, Long quantity, BigDecimal price) {
-        this.order = order;
+    public OrderItem(CustomerOrder customerOrder, Product product, Long quantity, BigDecimal price) {
+        this.customerOrder = customerOrder;
         this.product = product;
         this.quantity = quantity;
         this.price = price;
@@ -43,12 +43,12 @@ public class OrderItem {
         this.id = id;
     }
 
-    public Order getOrder() {
-        return order;
+    public CustomerOrder getOrder() {
+        return customerOrder;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrder(CustomerOrder customerOrder) {
+        this.customerOrder = customerOrder;
     }
 
     public Product getProduct() {

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Order {
+public class CustomerOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,13 +28,13 @@ public class Order {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customerOrder", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    protected Order() {
+    protected CustomerOrder() {
     }
 
-    public Order(Member member, OrderStatus status, BigDecimal totalPrice) {
+    public CustomerOrder(Member member, OrderStatus status, BigDecimal totalPrice) {
         this.member = member;
         this.status = status;
         this.totalPrice = totalPrice;
