@@ -9,13 +9,9 @@ import org.springframework.stereotype.Service;
 import rlguswn.JavaShop.domain.Member;
 import rlguswn.JavaShop.repository.MemberRepository;
 
-import java.util.Optional;
-
 @Service
-@Primary
 public class CustomUserDetailService implements UserDetailsService {
 
-    @Autowired
     private final MemberRepository memberRepository;
 
     public CustomUserDetailService(MemberRepository memberRepository) {

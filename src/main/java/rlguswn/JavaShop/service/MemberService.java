@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import rlguswn.JavaShop.domain.Member;
+import rlguswn.JavaShop.dto.member.MemberSignUpForm;
 import rlguswn.JavaShop.enums.Role;
 import rlguswn.JavaShop.repository.MemberRepository;
 
@@ -29,16 +30,16 @@ public class MemberService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Member signUp(String email, String password, String username, String address) {
+    public Member signUp(MemberSignUpForm form) {
         // email 중복 확인 필요
 
-        String encodedPassword = passwordEncoder.encode(password);
+        String encodedPassword = passwordEncoder.encode(form.getPassword());
 
         Member member = new Member(
-                email,
+                form.getEmail(),
                 encodedPassword,
-                username,
-                address,
+                form.getUsername(),
+                form.getAddress(),
                 Role.MEMBER
         );
         return memberRepository.save(member);
