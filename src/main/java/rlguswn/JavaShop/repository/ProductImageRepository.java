@@ -10,4 +10,5 @@ public interface ProductImageRepository {
     Optional<ProductImage> findById(Long id);
     List<ProductImage> findByProductId(Long productId);
     List<ProductImage> findAll();
+    boolean deleteById(Long id);
 }

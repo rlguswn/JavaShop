@@ -40,4 +40,14 @@ public class JpaCustomerOrderRepository implements CustomerOrderRepository {
         return em.createQuery("select o from Order o", CustomerOrder.class)
                 .getResultList();
     }
+
+    @Override
+    public boolean deleteById(Long id) {
+        CustomerOrder customerOrder = em.find(CustomerOrder.class, id);
+        if (customerOrder != null) {
+            em.remove(customerOrder);
+            return true;
+        }
+        return false;
+    }
 }

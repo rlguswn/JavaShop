@@ -10,4 +10,5 @@ public interface CartItemRepository {
     Optional<CartItem> findById(Long id);
     List<CartItem> findByCartId(Long cartId);
     List<CartItem> findAll();
+    boolean deleteById(Long id);
 }

@@ -40,4 +40,14 @@ public class JpaCartItemRepository implements CartItemRepository {
         return em.createQuery("select c from CartItem c", CartItem.class)
                 .getResultList();
     }
+
+    @Override
+    public boolean deleteById(Long id) {
+        CartItem cartItem = em.find(CartItem.class, id);
+        if (cartItem != null) {
+            em.remove(cartItem);
+            return true;
+        }
+        return false;
+    }
 }

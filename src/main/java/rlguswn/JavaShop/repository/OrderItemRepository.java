@@ -10,4 +10,5 @@ public interface OrderItemRepository {
     Optional<OrderItem> findById(Long id);
     List<OrderItem> findByOrderId(Long orderId);
     List<OrderItem> findAll();
+    boolean deleteById(Long id);
 }

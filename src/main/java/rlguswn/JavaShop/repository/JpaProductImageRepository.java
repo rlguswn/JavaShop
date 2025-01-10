@@ -40,4 +40,14 @@ public class JpaProductImageRepository implements ProductImageRepository {
         return em.createQuery("select p from ProductImage p", ProductImage.class)
                 .getResultList();
     }
+
+    @Override
+    public boolean deleteById(Long id) {
+        ProductImage productImage = em.find(ProductImage.class, id);
+        if (productImage != null) {
+            em.remove(productImage);
+            return true;
+        }
+        return false;
+    }
 }

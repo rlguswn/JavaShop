@@ -33,4 +33,14 @@ public class JpaProductRepository implements ProductRepository {
         return em.createQuery("select p from Product p", Product.class)
                 .getResultList();
     }
+
+    @Override
+    public boolean deleteById(Long id) {
+        Product product = em.find(Product.class, id);
+        if (product != null) {
+            em.remove(product);
+            return true;
+        }
+        return false;
+    }
 }

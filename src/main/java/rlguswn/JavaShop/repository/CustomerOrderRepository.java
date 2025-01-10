@@ -10,4 +10,5 @@ public interface CustomerOrderRepository {
     Optional<CustomerOrder> findById(Long id);
     List<CustomerOrder> findByMemberId(Long memberId);
     List<CustomerOrder> findAll();
+    boolean deleteById(Long id);
 }

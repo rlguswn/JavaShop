@@ -40,4 +40,14 @@ public class JpaOrderItemRepository implements OrderItemRepository {
         return em.createQuery("select o from OrderItem o", OrderItem.class)
                 .getResultList();
     }
+
+    @Override
+    public boolean deleteById(Long id) {
+        OrderItem orderItem = em.find(OrderItem.class, id);
+        if (orderItem != null) {
+            em.remove(orderItem);
+            return true;
+        }
+        return false;
+    }
 }
