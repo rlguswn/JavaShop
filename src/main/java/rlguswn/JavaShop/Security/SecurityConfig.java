@@ -32,7 +32,8 @@ public class SecurityConfig {
                                 "/",
                                 "/signup",
                                 "/login",
-                                "/logout"
+                                "/logout",
+                                "/error"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
@@ -41,6 +42,8 @@ public class SecurityConfig {
                 .formLogin(auth -> auth
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
+                        .usernameParameter("email")
+                        .passwordParameter("password")
                         .failureUrl("/login?error=true")
                         .defaultSuccessUrl("/", true)
                         .permitAll()
