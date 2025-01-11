@@ -3,6 +3,8 @@ package rlguswn.JavaShop.service;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import rlguswn.JavaShop.domain.Product;
+import rlguswn.JavaShop.dto.product.ProductRegisterForm;
+import rlguswn.JavaShop.dto.product.ProductUpdateForm;
 import rlguswn.JavaShop.repository.ProductRepository;
 
 import java.util.List;
@@ -18,7 +20,13 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public Product registerProduct(Product product) {
+    public Product registerProduct(ProductRegisterForm form) {
+        Product product = new Product(
+                form.getName(),
+                form.getDescription(),
+                form.getPrice(),
+                form.getQuantity()
+        );
         return productRepository.save(product);
     }
 
@@ -30,14 +38,14 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product updateProduct(Long id, Product updatedProduct) {
+    public Product updateProduct(Long id, ProductUpdateForm form) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
 
-        product.setName(updatedProduct.getName());
-        product.setDescription(updatedProduct.getDescription());
-        product.setPrice(updatedProduct.getPrice());
-        product.setQuantity(updatedProduct.getQuantity());
+        product.setName(form.getName());
+        product.setDescription(form.getDescription());
+        product.setPrice(form.getPrice());
+        product.setQuantity(form.getQuantity());
 
         return productRepository.save(product);
     }
