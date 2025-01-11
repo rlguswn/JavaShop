@@ -33,4 +33,8 @@ public class ProductImageService {
     public List<ProductImage> getAllProductImage() {
         return productImageRepository.findAll();
     }
+
+    public boolean deleteById(Long id) {
+        return productImageRepository.deleteById(id);
+    }
 }

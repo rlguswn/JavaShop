@@ -33,4 +33,8 @@ public class OrderItemService {
     public List<OrderItem> findAllOrderItem() {
         return orderItemRepository.findAll();
     }
+
+    public boolean deleteById(Long id) {
+        return orderItemRepository.deleteById(id);
+    }
 }

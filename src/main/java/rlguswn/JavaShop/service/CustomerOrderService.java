@@ -33,4 +33,8 @@ public class CustomerOrderService {
     public List<CustomerOrder> getAllOrder() {
         return customerOrderRepository.findAll();
     }
+
+    public boolean deleteById(Long id) {
+        return customerOrderRepository.deleteById(id);
+    }
 }
