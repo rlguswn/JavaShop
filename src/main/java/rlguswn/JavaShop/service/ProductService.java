@@ -2,11 +2,14 @@ package rlguswn.JavaShop.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import rlguswn.JavaShop.domain.Product;
+import rlguswn.JavaShop.domain.ProductImage;
 import rlguswn.JavaShop.dto.product.ProductRegisterForm;
 import rlguswn.JavaShop.dto.product.ProductUpdateForm;
 import rlguswn.JavaShop.repository.ProductRepository;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,9 +18,11 @@ import java.util.Optional;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductImageService productImageService;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, ProductImageService productImageService) {
         this.productRepository = productRepository;
+        this.productImageService = productImageService;
     }
 
     public Product registerProduct(ProductRegisterForm form) {
@@ -27,7 +32,22 @@ public class ProductService {
                 form.getPrice(),
                 form.getQuantity()
         );
-        return productRepository.save(product);
+        productRepository.save(product);
+
+        MultipartFile imageFile = form.getImage();
+        if (imageFile != null && !imageFile.isEmpty()) {
+            try {
+                ProductImage productImage = new ProductImage(
+                        product,
+                        imageFile.getBytes(),
+                        imageFile.getContentType()
+                );
+                productImageService.saveProductImage(productImage);
+            } catch (IOException e) {
+                throw new RuntimeException("이미지 저장 중 오류가 발생했습니다.");
+            }
+        }
+        return product;
     }
 
     public Optional<Product> getProductById(Long id) {
@@ -47,7 +67,22 @@ public class ProductService {
         product.setPrice(form.getPrice());
         product.setQuantity(form.getQuantity());
 
-        return productRepository.save(product);
+        productRepository.save(product);
+
+        MultipartFile imageFile = form.getImage();
+        if (imageFile != null && !imageFile.isEmpty()) {
+            try {
+                ProductImage productImage = new ProductImage(
+                        product,
+                        imageFile.getBytes(),
+                        imageFile.getContentType()
+                );
+                productImageService.saveProductImage(productImage);
+            } catch (IOException e) {
+                throw new RuntimeException("이미지 저장 중 오류가 발생했습니다.");
+            }
+        }
+        return product;
     }
 
     public boolean deleteById(Long id) {

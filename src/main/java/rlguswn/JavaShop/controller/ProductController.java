@@ -35,8 +35,8 @@ public class ProductController {
         return ResponseEntity.ok(message);
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<Product> registerProduct(@RequestBody ProductRegisterForm form) {
+    @PostMapping(value = "/register", consumes = "multipart/form-data")
+    public ResponseEntity<Product> registerProduct(@ModelAttribute ProductRegisterForm form) {
         Product product = productService.registerProduct(form);
         return ResponseEntity.ok(product);
     }

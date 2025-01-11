@@ -1,5 +1,7 @@
 package rlguswn.JavaShop.dto.product;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.math.BigDecimal;
 
 public class ProductUpdateForm {
@@ -8,6 +10,7 @@ public class ProductUpdateForm {
     private String description;
     private BigDecimal price;
     private Long quantity;
+    private MultipartFile image;
 
     public String getName() {
         return name;
@@ -39,5 +42,13 @@ public class ProductUpdateForm {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
+    }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
     }
 }
