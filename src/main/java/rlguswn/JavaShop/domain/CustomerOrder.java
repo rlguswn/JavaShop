@@ -1,5 +1,6 @@
 package rlguswn.JavaShop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import rlguswn.JavaShop.enums.OrderStatus;
 
@@ -17,6 +18,7 @@ public class CustomerOrder {
 
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
+    @JsonIgnore
     private Member member;
 
     @Enumerated(EnumType.STRING)
