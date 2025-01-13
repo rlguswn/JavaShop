@@ -1,12 +1,12 @@
 package rlguswn.JavaShop.service;
 
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import rlguswn.JavaShop.domain.Cart;
 import rlguswn.JavaShop.domain.Member;
 import rlguswn.JavaShop.dto.member.MemberSignUpForm;
 import rlguswn.JavaShop.enums.Role;
@@ -19,14 +19,13 @@ import java.util.Optional;
 @Transactional
 public class MemberService {
 
-    @Autowired
     private final MemberRepository memberRepository;
-
-    @Autowired
+    private final CartService cartService;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public MemberService(MemberRepository memberRepository, BCryptPasswordEncoder passwordEncoder) {
+    public MemberService(MemberRepository memberRepository, CartService cartService, BCryptPasswordEncoder passwordEncoder) {
         this.memberRepository = memberRepository;
+        this.cartService = cartService;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -42,7 +41,12 @@ public class MemberService {
                 form.getAddress(),
                 Role.MEMBER
         );
-        return memberRepository.save(member);
+        Member savedMember = memberRepository.save(member);
+
+        Cart cart = new Cart(savedMember);
+        cartService.createCart(cart);
+
+        return savedMember;
     }
 
     public Optional<Member> findById(Long id) {
