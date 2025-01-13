@@ -30,7 +30,7 @@ public class JpaCartItemRepository implements CartItemRepository {
 
     @Override
     public List<CartItem> findByCartId(Long cartId) {
-         return em.createQuery("select c from CartItem c where c.cartId = :cartId", CartItem.class)
+         return em.createQuery("select c from CartItem c where c.cart.id = :cartId", CartItem.class)
                 .setParameter("cartId", cartId)
                 .getResultList();
     }

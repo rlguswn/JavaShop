@@ -30,7 +30,7 @@ public class JpaProductImageRepository implements ProductImageRepository {
 
     @Override
     public List<ProductImage> findByProductId(Long productId) {
-        return em.createQuery("select p from ProductImage p where p.productId = :productId", ProductImage.class)
+        return em.createQuery("select p from ProductImage p where p.product.id = :productId", ProductImage.class)
                 .setParameter("productId", productId)
                 .getResultList();
     }

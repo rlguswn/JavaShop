@@ -30,7 +30,7 @@ public class JpaCartRepository implements CartRepository {
 
     @Override
     public Optional<Cart> findByMemberId(Long memberId) {
-        List<Cart> result = em.createQuery("select c from Cart c where c.memberId = :memberId", Cart.class)
+        List<Cart> result = em.createQuery("select c from Cart c where c.member.id = :memberId", Cart.class)
                 .setParameter("memberId", memberId)
                 .getResultList();
         return result.stream().findAny();

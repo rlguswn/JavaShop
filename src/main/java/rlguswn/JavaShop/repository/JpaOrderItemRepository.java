@@ -30,7 +30,7 @@ public class JpaOrderItemRepository implements OrderItemRepository {
 
     @Override
     public List<OrderItem> findByOrderId(Long orderId) {
-        return em.createQuery("select o from OrderItem o where o.orderId = :orderId", OrderItem.class)
+        return em.createQuery("select o from OrderItem o where o.order.id = :orderId", OrderItem.class)
                 .setParameter("orderId", orderId)
                 .getResultList();
     }
