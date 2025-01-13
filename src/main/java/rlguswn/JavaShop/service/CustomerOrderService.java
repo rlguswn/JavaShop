@@ -3,6 +3,8 @@ package rlguswn.JavaShop.service;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import rlguswn.JavaShop.domain.CustomerOrder;
+import rlguswn.JavaShop.domain.Member;
+import rlguswn.JavaShop.enums.OrderStatus;
 import rlguswn.JavaShop.repository.CustomerOrderRepository;
 
 import java.util.List;
@@ -18,8 +20,12 @@ public class CustomerOrderService {
         this.customerOrderRepository = customerOrderRepository;
     }
 
-    public CustomerOrder createOrder(CustomerOrder customerOrder) {
-        return customerOrderRepository.save(customerOrder);
+    public CustomerOrder createOrder(Member member) {
+        CustomerOrder order = new CustomerOrder(
+                member,
+                OrderStatus.PENDING
+        );
+        return customerOrderRepository.save(order);
     }
 
     public Optional<CustomerOrder> getOrderById(Long id) {
@@ -36,5 +42,12 @@ public class CustomerOrderService {
 
     public boolean deleteById(Long id) {
         return customerOrderRepository.deleteById(id);
+    }
+
+    public CustomerOrder cancelOrderById(Long id) {
+        CustomerOrder order = customerOrderRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("주문을 찾을 수 없습니다."));
+        order.setStatus(OrderStatus.CANCELED);
+        return customerOrderRepository.save(order);
     }
 }

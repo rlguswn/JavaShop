@@ -24,7 +24,6 @@ public class CustomerOrder {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    @Column(nullable = false)
     private BigDecimal totalPrice;
 
     @Column(nullable = false, updatable = false)
@@ -36,10 +35,9 @@ public class CustomerOrder {
     protected CustomerOrder() {
     }
 
-    public CustomerOrder(Member member, OrderStatus status, BigDecimal totalPrice) {
+    public CustomerOrder(Member member, OrderStatus status) {
         this.member = member;
         this.status = status;
-        this.totalPrice = totalPrice;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -71,7 +69,7 @@ public class CustomerOrder {
         return totalPrice;
     }
 
-    public void setTotal_price(BigDecimal totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 
