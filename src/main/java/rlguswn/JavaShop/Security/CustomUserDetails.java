@@ -7,11 +7,17 @@ import rlguswn.JavaShop.domain.Member;
 import java.util.Collection;
 import java.util.List;
 
-public record CustomUserDetails(Member member) implements UserDetails {
+public class CustomUserDetails implements UserDetails {
+
+    private final Member member;
+
+    public CustomUserDetails(Member member) {
+        this.member = member;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(() -> "ROLE_" + member.getRole());
     }
 
     @Override
