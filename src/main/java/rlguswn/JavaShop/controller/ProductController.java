@@ -54,8 +54,8 @@ public class ProductController {
         return ResponseEntity.ok(message);
     }
 
-    @PostMapping("/{id}/update")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody ProductUpdateForm form) {
+    @PostMapping(value = "/{id}/update", consumes = "multipart/form-data")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @ModelAttribute ProductUpdateForm form) {
         Product product = productService.updateProduct(id, form);
         return ResponseEntity.ok(product);
     }
