@@ -2,7 +2,10 @@ package rlguswn.JavaShop.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import rlguswn.JavaShop.domain.Cart;
 import rlguswn.JavaShop.domain.CartItem;
+import rlguswn.JavaShop.domain.Product;
+import rlguswn.JavaShop.dto.cart.CartItemRegisterForm;
 import rlguswn.JavaShop.repository.CartItemRepository;
 
 import java.util.List;
@@ -18,7 +21,16 @@ public class CartItemService {
         this.cartItemRepository = cartItemRepository;
     }
 
-    public CartItem addCartItem(CartItem cartItem) {
+    public Optional<CartItem> getCartItemById(Long id) {
+        return cartItemRepository.findById(id);
+    }
+
+    public CartItem addCartItem(CartItemRegisterForm form, Product product, Cart cart) {
+        CartItem cartItem = new CartItem(
+                form.getQuantity(),
+                product,
+                cart
+        );
         return cartItemRepository.save(cartItem);
     }
 
