@@ -37,4 +37,10 @@ public class MemberController {
         String message = "로그인 페이지";
         return ResponseEntity.ok(message);
     }
+
+    @GetMapping("/mypage")
+    public ResponseEntity<Member> myPage() {
+        Member member = memberService.getLoginMember();
+        return ResponseEntity.ok(member);
+    }
 }
