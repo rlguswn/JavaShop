@@ -31,7 +31,7 @@ public class JpaCustomerOrderRepository implements CustomerOrderRepository {
     @Override
     public List<CustomerOrder> findByMemberId(Long memberId) {
         return em.createQuery("select o from CustomerOrder o where o.member.id = :memberId", CustomerOrder.class)
-                .setParameter("memderId", memberId)
+                .setParameter("memberId", memberId)
                 .getResultList();
     }
 
