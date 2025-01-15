@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -26,14 +28,21 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        CharacterEncodingFilter filter = new CharacterEncodingFilter("UTF-8", true);
+        http.addFilterBefore(filter, CsrfFilter.class);
+
         http
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/",
                                 "/signup",
                                 "/login",
                                 "/logout",
-                                "/error"
+                                "/error",
+                                "/css/**",
+                                "/images/**",
+                                "/WEB-INF/views/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
@@ -54,9 +63,6 @@ public class SecurityConfig {
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login")
                 );
-
-        http
-                .csrf(AbstractHttpConfigurer::disable);
 
         return http.build();
     }
