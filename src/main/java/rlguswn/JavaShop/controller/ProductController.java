@@ -1,7 +1,7 @@
 package rlguswn.JavaShop.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rlguswn.JavaShop.domain.Product;
 import rlguswn.JavaShop.dto.product.ProductRegisterForm;
@@ -24,46 +24,49 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProduct() {
+    public String getAllProduct(Model model) {
         List<Product> products = productService.getAllProduct();
-        return ResponseEntity.ok(products);
+        model.addAttribute("products", products);
+        return "product/productList";
     }
 
     @GetMapping("/register")
-    public ResponseEntity<String> registerPage() {
-        String message = "상품 등록 페이지";
-        return ResponseEntity.ok(message);
+    public String registerPage() {
+        return "product/productRegister";
     }
 
     @PostMapping(value = "/register", consumes = "multipart/form-data")
-    public ResponseEntity<Product> registerProduct(@ModelAttribute ProductRegisterForm form) {
+    public String registerProduct(@ModelAttribute ProductRegisterForm form) {
         Product product = productService.registerProduct(form);
-        return ResponseEntity.ok(product);
+        Long productId = product.getId();
+        return "redirect:/product/" + productId;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-        return productService.getProductById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public String getProductById(Model model, @PathVariable Long id) {
+        Product product = productService.getProductById(id).get();
+        model.addAttribute("product", product);
+        return "product/productDetail";
     }
 
     @GetMapping("/{id}/update")
-    public ResponseEntity<String> updatePage(@PathVariable Long id) {
-        String message = "상품 수정 페이지";
-        return ResponseEntity.ok(message);
+    public String updatePage(Model model, @PathVariable Long id) {
+        Product product = productService.getProductById(id).get();
+        model.addAttribute("product", product);
+        return "product/productUpdate";
     }
 
     @PostMapping(value = "/{id}/update", consumes = "multipart/form-data")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @ModelAttribute ProductUpdateForm form) {
+    public String updateProduct(Model model, @PathVariable Long id, @ModelAttribute ProductUpdateForm form) {
         Product product = productService.updateProduct(id, form);
-        return ResponseEntity.ok(product);
+        Long productId = product.getId();
+        model.addAttribute("product", product);
+        return "redirect:/product/" + productId;
     }
 
     @GetMapping("/{id}/delete")
-    public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
-        boolean isDeleted = productService.deleteById(id);
-        String message = isDeleted ? "상품을 제거했습니다.":"상품을 제거하지 못했습니다.";
-        return ResponseEntity.ok(message);
+    public String deleteProduct(@PathVariable Long id) {
+        productService.deleteById(id);
+        return "redirect:/product";
     }
 }

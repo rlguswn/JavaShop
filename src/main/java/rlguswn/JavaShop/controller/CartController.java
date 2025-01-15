@@ -1,7 +1,7 @@
 package rlguswn.JavaShop.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rlguswn.JavaShop.domain.Cart;
 import rlguswn.JavaShop.domain.CartItem;
@@ -32,30 +32,31 @@ public class CartController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CartItem>> getCartItem() {
+    public String getCartItem(Model model) {
         Member member = memberService.getLoginMember();
         Cart cart = cartService.getCartByMemberId(member.getId())
                 .orElseThrow(() -> new IllegalArgumentException("장바구니가 존재하지 않습니다."));
         List<CartItem> cartItems = cartItemService.getCartItemByCartId(cart.getId());
-        return ResponseEntity.ok(cartItems);
+        model.addAttribute("cartItems", cartItems);
+        return "cart/cartDetail";
     }
 
     @PostMapping("/add")
-    public ResponseEntity<CartItem> addCartItem(@RequestBody CartItemRegisterForm form) {
+    public String addCartItem(@RequestBody CartItemRegisterForm form) {
         Cart cart = cartService.getCartByMemberId(memberService.getLoginMember().getId())
                 .orElseThrow(() -> new IllegalArgumentException("장바구니가 존재하지 않습니다."));
         Product product = productService.getProductById(form.getProductId())
                 .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
+        Long productId = product.getId();
 
         CartItem cartItem = cartItemService.addCartItem(form, product, cart);
 
-        return ResponseEntity.ok(cartItem);
+        return "redirect:/product/" + productId;
     }
 
     @GetMapping("/{id}/delete")
-    public ResponseEntity<String> deleteCartItem(@PathVariable Long id) {
-        boolean isDeleted = cartItemService.deleteById(id);
-        String message = isDeleted ? "장바구니에서 상품을 제거했습니다.":"장바구니에서 상품을 제거하지 못했습니다.";
-        return ResponseEntity.ok(message);
+    public String deleteCartItem(@PathVariable Long id) {
+        cartItemService.deleteById(id);
+        return "redirect:/cart";
     }
 }

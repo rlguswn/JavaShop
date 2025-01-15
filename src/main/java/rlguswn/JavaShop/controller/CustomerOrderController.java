@@ -1,11 +1,10 @@
 package rlguswn.JavaShop.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rlguswn.JavaShop.domain.CustomerOrder;
 import rlguswn.JavaShop.domain.Member;
-import rlguswn.JavaShop.domain.OrderItem;
 import rlguswn.JavaShop.dto.customerorder.OrderItemRegisterForm;
 import rlguswn.JavaShop.service.CustomerOrderService;
 import rlguswn.JavaShop.service.MemberService;
@@ -28,23 +27,25 @@ public class CustomerOrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CustomerOrder>> getOrderItem() {
+    public String getOrderItem(Model model) {
         Long memberId = memberService.getLoginMember().getId();
         List<CustomerOrder> orders = customerOrderService.getOrderByMemberId(memberId);
-        return ResponseEntity.ok(orders);
+        model.addAttribute("orders", orders);
+        return "order/orderList";
     }
 
     @PostMapping("/register")
-    public ResponseEntity<CustomerOrder> registerOrder(@RequestBody List<OrderItemRegisterForm> forms) {
+    public String registerOrder(Model model, @RequestBody List<OrderItemRegisterForm> forms) {
         Member member = memberService.getLoginMember();
         CustomerOrder order = customerOrderService.createOrder(member);
         orderItemService.addOrderItem(order, forms);
-        return ResponseEntity.ok(order);
+        model.addAttribute("order", order);
+        return "order/orderDetail";
     }
 
     @GetMapping("/{id}/cancel")
-    public ResponseEntity<CustomerOrder> cancelOrder(@PathVariable Long id) {
-        CustomerOrder order = customerOrderService.cancelOrderById(id);
-        return ResponseEntity.ok(order);
+    public String cancelOrder(@PathVariable Long id) {
+        customerOrderService.cancelOrderById(id);
+        return "redirect:/order";
     }
 }

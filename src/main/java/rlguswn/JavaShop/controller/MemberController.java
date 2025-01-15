@@ -1,8 +1,8 @@
 package rlguswn.JavaShop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,26 +21,25 @@ public class MemberController {
     }
 
     @GetMapping("/signup")
-    public ResponseEntity<String> signupPage() {
-        String message = "회원가입 페이지";
-        return ResponseEntity.ok(message);
+    public String signupPage() {
+        return "member/signup";
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Member> signup(@RequestBody MemberSignUpForm form) {
+    public String signup(@RequestBody MemberSignUpForm form) {
         Member member = memberService.signUp(form);
-        return ResponseEntity.ok(member);
+        return "redirect:/";
     }
 
     @GetMapping("/login")
-    public ResponseEntity<String> loginPage() {
-        String message = "로그인 페이지";
-        return ResponseEntity.ok(message);
+    public String loginPage() {
+        return "member/login";
     }
 
     @GetMapping("/mypage")
-    public ResponseEntity<Member> myPage() {
+    public String myPage(Model model) {
         Member member = memberService.getLoginMember();
-        return ResponseEntity.ok(member);
+        model.addAttribute("member", member);
+        return "member/mypage";
     }
 }
