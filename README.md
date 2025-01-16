@@ -35,7 +35,7 @@
   - 주문을 취소할 수 있습니다.
 
 # DataBase Structure
-<img src="src/docs/images/JavaShopERD.jpg" alt="JavaShop ERD" width="600">
+<img src="src/docs/images/JavaShopERD.JPG" alt="JavaShop ERD" width="600">
 
 # Index
 [1. 기술스택 & 개발환경](#1-기술-스택--개발-환경)  
