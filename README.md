@@ -35,7 +35,7 @@
   - 주문을 취소할 수 있습니다.
 
 # DataBase Structure
-![DjangoMBTIERD](https://github.com/user-attachments/assets/58013fa8-01d8-4273-8ea6-334c151788c6)
+![JavaShopERD](src/docs/images/JavaShopERD.jpg)
 
 # Index
 [1. 기술스택 & 개발환경](#1-기술-스택--개발-환경)  
