@@ -1,0 +1,70 @@
+/* 기본 레이아웃 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* 네비게이션 바 */
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;  /* 리스트 점 제거 */
+    padding: 0;
+    margin: 0;
+    display: flex;  /* 가로 정렬 */
+    gap: 15px;  /* 메뉴 간격 */
+    margin-left: auto;  /* 오른쪽 정렬 */
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #575757;
+}
+
+/* 로고 스타일 */
+.logo {
+    font-size: 24px;
+    font-weight: bold;  /* 두껍게 */
+    color: white;  /* 흰색 */
+    text-decoration: none;  /* 밑줄 제거 */
+}
+
+/* 버튼 스타일 */
+button, .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover, .btn:hover {
+    background-color: #45a049;
+}
