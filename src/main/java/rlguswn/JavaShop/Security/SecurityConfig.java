@@ -42,7 +42,8 @@ public class SecurityConfig {
                                 "/error",
                                 "/css/**",
                                 "/images/**",
-                                "/WEB-INF/views/**"
+                                "/WEB-INF/views/**",
+                                "/resources/js/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
