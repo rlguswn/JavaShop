@@ -10,18 +10,23 @@
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
         <h2>회원가입</h2>
-        <form action="${pageContext.request.contextPath}/signup" method="post">
-            <label for="username">아이디</label>
-            <input type="text" id="username" name="username" required>
+        <form id="signupForm">
+            <label for="email">아이디</label>
+            <input type="text" id="email" name="email" required>
 
             <label for="password">비밀번호</label>
             <input type="password" id="password" name="password" required>
 
-            <label for="name">이름</label>
-            <input type="text" id="name" name="name" required>
+            <label for="username">이름</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="address">주소</label>
+            <input type="text" id="address" name="address" required>
 
             <button type="submit">회원가입</button>
         </form>
+
+        <script src="/resources/js/signup.js"></script>
     </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>
