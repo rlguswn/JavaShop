@@ -9,7 +9,7 @@
 <body>
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
-        <h2>마이페이지</h1>
+        <h2>마이페이지</h2>
         <table>
             <tr>
                 <th>아이디</th>
