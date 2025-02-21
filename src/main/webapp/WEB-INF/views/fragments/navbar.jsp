@@ -9,7 +9,7 @@
             <li><a href="${pageContext.request.contextPath}/cart">장바구니</a></li>
             <li><a href="${pageContext.request.contextPath}/orders">주문 내역</a></li>
             <sec:authorize access="isAuthenticated()">
-                <li><a href="${pageContext.request.contextPath}/member/mypage">마이페이지</a></li>
+                <li><a href="${pageContext.request.contextPath}/mypage">마이페이지</a></li>
                 <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
             </sec:authorize>
             <sec:authorize access="isAnonymous()">
