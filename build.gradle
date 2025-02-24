@@ -29,17 +29,16 @@ dependencies {
 	// Tomcat
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
-	// JSTL
-	implementation 'javax.servlet:jstl:1.2'
+	// JSP JSTL
+	implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
 
 	// JSP API
 	implementation 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
 
 	// Spring Security Tag
 	implementation 'org.springframework.security:spring-security-taglibs:6.4.2'
-
-	// servlet API
-	implementation 'javax.servlet:javax.servlet-api:4.0.1'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
