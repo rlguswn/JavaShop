@@ -17,38 +17,32 @@
         </c:if>
 
         <c:if test="${not empty cartItems}">
-            <form action="/cart/update" method="post">
-                <table class="table">
-                    <thead>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>상품명</th>
+                        <th>가격</th>
+                        <th>수량</th>
+                        <th>합계</th>
+                        <th>삭제</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="cartItem" items="${cartItems}">
                         <tr>
-                            <th>상품명</th>
-                            <th>가격</th>
-                            <th>수량</th>
-                            <th>합계</th>
-                            <th>삭제</th>
+                            <td>${cartItem.product.name}</td>
+                            <td>${cartItem.product.price}</td>
+                            <td>${cartItem.quantity}</td>
+                            <td>${cartItem.product.price * cartItem.quantity}</td>
+                            <td>
+                                <form action="/cart/${cartItem.id}/delete" method="get" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger">삭제</button>
+                                </form>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="cartItem" items="${cartItems}">
-                            <tr>
-                                <td>${cartItem.productName}</td>
-                                <td>${cartItem.price}</td>
-                                <td>
-                                    <input type="number" name="quantity" value="${cartItem.quantity}" min="1" required>
-                                </td>
-                                <td>${cartItem.price * cartItem.quantity}</td>
-                                <td>
-                                    <form action="/cart/${cartItem.id}/delete" method="get" style="display:inline;">
-                                        <button type="submit" class="btn btn-danger">삭제</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-
-                <button type="submit" class="btn btn-primary">수량 변경</button>
-            </form>
+                    </c:forEach>
+                </tbody>
+            </table>
         </c:if>
     </div>
 
