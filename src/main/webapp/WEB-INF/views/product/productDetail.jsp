@@ -33,6 +33,17 @@
             </tr>
         </table>
 
+        <div class="mt-3">
+            <form id="cartItemRegister">
+                <input type="hidden" id="productId" name="productId" value="${product.id}">
+                <label for="quantity">수량:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="${product.quantity}" required>
+                <button type="submit" class="btn btn-primary">장바구니에 추가</button>
+            </form>
+
+            <script src="/resources/js/cartItemRegister.js"></script>
+        </div>
+
         <div>
             <a href="/product/${product.id}/update" class="btn">수정</a>
             <a href="/product/${product.id}/delete" class="btn" style="background-color: red;">삭제</a>
