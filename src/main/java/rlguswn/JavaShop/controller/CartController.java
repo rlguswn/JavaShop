@@ -42,7 +42,7 @@ public class CartController {
     }
 
     @PostMapping("/add")
-    public String addCartItem(@RequestBody CartItemRegisterForm form) {
+    public String addCartItem(@ModelAttribute CartItemRegisterForm form) {
         Cart cart = cartService.getCartByMemberId(memberService.getLoginMember().getId())
                 .orElseThrow(() -> new IllegalArgumentException("장바구니가 존재하지 않습니다."));
         Product product = productService.getProductById(form.getProductId())
