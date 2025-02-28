@@ -43,6 +43,12 @@
                     </c:forEach>
                 </tbody>
             </table>
+
+            <form id="orderRegister">
+                <button type="submit" class="btn btn-primary">주문하기</button>
+            </form>
+
+            <script src="/resources/js/orderRegister.js"></script>
         </c:if>
     </div>
 
