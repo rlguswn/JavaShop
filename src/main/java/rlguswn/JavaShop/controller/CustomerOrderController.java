@@ -11,6 +11,7 @@ import rlguswn.JavaShop.service.MemberService;
 import rlguswn.JavaShop.service.OrderItemService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/order")
@@ -34,8 +35,18 @@ public class CustomerOrderController {
         return "order/orderList";
     }
 
+    @GetMapping("/{id}")
+    public String getOrderById(Model model, @PathVariable Long id) {
+        Member member = memberService.getLoginMember();
+        Optional<CustomerOrder> order = customerOrderService.getOrderById(id);
+        if (order.isPresent() && member.equals(order.get().getMember())) {
+            model.addAttribute("order", order);
+        }
+        return "order/orderDetail";
+    }
+
     @PostMapping("/register")
-    public String registerOrder(Model model, @RequestBody List<OrderItemRegisterForm> forms) {
+    public String registerOrder(Model model, @ModelAttribute List<OrderItemRegisterForm> forms) {
         Member member = memberService.getLoginMember();
         CustomerOrder order = customerOrderService.createOrder(member);
         orderItemService.addOrderItem(order, forms);
