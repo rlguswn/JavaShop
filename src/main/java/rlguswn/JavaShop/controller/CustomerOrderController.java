@@ -44,7 +44,7 @@ public class CustomerOrderController {
         Member member = memberService.getLoginMember();
         Optional<CustomerOrder> order = customerOrderService.getOrderById(id);
         if (order.isPresent() && member.equals(order.get().getMember())) {
-            model.addAttribute("order", order);
+            model.addAttribute("order", order.get());
         }
         return "order/orderDetail";
     }
