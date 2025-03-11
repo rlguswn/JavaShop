@@ -41,12 +41,12 @@
                 <button type="submit" class="btn btn-primary">장바구니에 추가</button>
             </form>
 
-            <script src="/resources/js/cartItemRegister.js"></script>
+            <script src="${pageContext.request.contextPath}/resources/js/cartItemRegister.js"></script>
         </div>
 
         <div>
-            <a href="/product/${product.id}/update" class="btn">수정</a>
-            <a href="/product/${product.id}/delete" class="btn" style="background-color: red;">삭제</a>
+            <a href="${pageContext.request.contextPath}/product/${product.id}/update" class="btn">수정</a>
+            <a href="${pageContext.request.contextPath}/product/${product.id}/delete" class="btn" style="background-color: red;">삭제</a>
         </div>
     </div>
 

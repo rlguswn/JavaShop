@@ -26,7 +26,7 @@
             <button type="submit">회원가입</button>
         </form>
 
-        <script src="/resources/js/signup.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
     </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>

@@ -35,7 +35,7 @@
                             <td>${cartItem.quantity}</td>
                             <td>${cartItem.product.price * cartItem.quantity}</td>
                             <td>
-                                <form action="/cart/${cartItem.id}/delete" method="get" style="display:inline;">
+                                <form action="${pageContext.request.contextPath}/cart/${cartItem.id}/delete" method="get" style="display:inline;">
                                     <button type="submit" class="btn btn-danger">삭제</button>
                                 </form>
                             </td>
@@ -48,7 +48,7 @@
                 <button type="submit" class="btn btn-primary">주문하기</button>
             </form>
 
-            <script src="/resources/js/orderRegister.js"></script>
+            <script src="${pageContext.request.contextPath}/resources/js/orderRegister.js"></script>
         </c:if>
     </div>
 

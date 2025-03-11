@@ -29,7 +29,7 @@
             <button type="submit">상품등록</button>
         </form>
 
-        <script src="/resources/js/productRegister.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/productRegister.js"></script>
     </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>

@@ -20,7 +20,7 @@
             <button type="submit">로그인</button>
         </form>
 
-        <script src="/resources/js/login.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
     </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>

@@ -41,7 +41,7 @@
                                 </c:forEach>
                             </td>
                             <td>
-                                <a href="/order/${order.id}" class="btn btn-primary">상세 보기</a>
+                                <a href="${pageContext.request.contextPath}/order/${order.id}" class="btn btn-primary">상세 보기</a>
                             </td>
                         </tr>
                     </c:forEach>

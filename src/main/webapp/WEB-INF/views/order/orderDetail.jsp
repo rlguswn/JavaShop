@@ -42,7 +42,7 @@
             <h4>총 주문 금액: ${order.totalPrice} 원</h4>
         </c:if>
 
-        <a href="/" class="btn btn-primary">메인 페이지로</a>
+        <a href="${pageContext.request.contextPath}/" class="btn btn-primary">메인 페이지로</a>
     </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>
