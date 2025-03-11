@@ -4,7 +4,7 @@ WORKDIR /usr/local/tomcat
 
 RUN rm -rf /webapps/*
 
-COPY build/libs/JavaShop-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/app.war
+COPY build/libs/JavaShop-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 
