@@ -28,11 +28,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="cartItem" items="${cartItems}">
-                        <tr>
+                    <c:forEach var="cartItem" items="${cartItems}" varStatus="status">
+                        <tr data-product-id="${cartItem.product.id}">
                             <td>${cartItem.product.name}</td>
                             <td>${cartItem.product.price}</td>
-                            <td>${cartItem.quantity}</td>
+                            <td class="quantity">${cartItem.quantity}</td>
                             <td>${cartItem.product.price * cartItem.quantity}</td>
                             <td>
                                 <form action="${pageContext.request.contextPath}/cart/${cartItem.id}/delete" method="get" style="display:inline;">

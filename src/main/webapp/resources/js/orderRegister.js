@@ -1,25 +1,24 @@
 document.getElementById("orderRegister").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const formData = new URLSearchParams();
-    let index = 0;
+    const forms = [];
 
-    while (document.getElementById(`productId${index}`)) {
-        let productId = document.getElementById(`productId${index}`).innerText;
-        let quantity = document.getElementById(`quantity${index}`).innerText;
+    document.querySelectorAll("[data-product-id]").forEach(row => {
+        let productId = row.getAttribute("data-product-id");
+        let quantity = row.querySelector(".quantity").innerText;
 
-        formData.append(`forms[${index}].productId`, productId);
-        formData.append(`forms[${index}].quantity`, quantity);
-
-        index++;
-    }
+        forms.push({
+            productId: productId,
+            quantity: quantity
+        });
+    });
 
     fetch("/order/register", {
         method: "POST",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/json"
         },
-        body: formData,
+        body: JSON.stringify(forms),
         redirect: "manual"
     })
     .then(response => {
