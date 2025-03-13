@@ -50,7 +50,7 @@ public class CustomerOrderController {
     }
 
     @PostMapping("/register")
-    public String registerOrder(Model model, @ModelAttribute List<OrderItemRegisterForm> forms) {
+    public String registerOrder(Model model, @RequestBody List<OrderItemRegisterForm> forms) {
         Member member = memberService.getLoginMember();
         CustomerOrder order = customerOrderService.createOrder(member);
         orderItemService.addOrderItem(order, forms);
