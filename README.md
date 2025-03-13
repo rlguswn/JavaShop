@@ -5,6 +5,9 @@
 # 개발 기간
 - 25.01.01 ~ 진행중
 
+# 배포 링크
+- [배포된 프로젝트 바로가기](https://silky-sammy-khjoo0318-58f58655.koyeb.app/)
+
 # 주요 기능
 ## 🧑‍💼 회원 관리
 - 회원가입 및 로그인
@@ -49,6 +52,7 @@
         <tr>
             <th>프론트엔드</th>
             <th>백엔드</th>
+            <th>배포</th>
         </tr>
     </thead>
     <tbody>
@@ -66,6 +70,11 @@
             <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
             <img src="https://img.shields.io/badge/JPQL-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
           </td>
+          <td>
+            <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
+            <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black">
+            <img src="https://img.shields.io/badge/Koyeb-0078FF?style=for-the-badge&logo=koyeb&logoColor=white">
+          </td>
         </tr>
     </tbody>
 </table>
@@ -76,6 +85,7 @@
 - 회원가입, 상품 관리, 장바구니, 주문 기능을 제공합니다.
 - Spring Security를 통한 인증/인가와 JPA 기반 데이터 관리로 효율적인 서비스를 제공합니다.
 <!-- - JSP를 활용해 서버 사이드 렌더링 방식으로 프론트엔드를 구현하고 있습니다. -->
+- **현재 배포된 프로젝트:** [JavaShop 배포 링크](https://silky-sammy-khjoo0318-58f58655.koyeb.app/)
 
 ⚙️ 서비스 개발 관점
 - 유연한 확장성과 안정성을 고려하여 기능별로 모듈화된 설계를 적용했습니다.
@@ -101,4 +111,14 @@
 - 결제 전 주문 취소 기능도 제공합니다.
 
 # 4. 기능별 라이브 데모
-구현 예정
+## 회원가입과 로그인
+<img src="src/docs/gifs/회원가입과로그인" alt="회원가입과로그인" width="600">
+
+## 상품 등록
+<img src="src/docs/gifs/상품등록" alt="상품등록" width="600">
+
+## 장바구니에 담기
+<img src="src/docs/gifs/장바구니에담기" alt="장바구니에 담기" width="600">
+
+## 장바구니 상품 주문
+<img src="src/docs/gifs/장바구니상품주문" alt="장바구니상품주문" width="600">
