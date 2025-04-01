@@ -30,7 +30,9 @@ public class MemberService {
     }
 
     public Member signUp(MemberSignUpForm form) {
-        // email 중복 확인 필요
+        if (memberRepository.findByEmail(form.getEmail()).isPresent()) {
+            throw new RuntimeException("이미 가입된 이메일입니다.");
+        }
 
         String encodedPassword = passwordEncoder.encode(form.getPassword());
 
@@ -39,7 +41,7 @@ public class MemberService {
                 encodedPassword,
                 form.getUsername(),
                 form.getAddress(),
-                Role.MEMBER
+                form.getRole()
         );
         Member savedMember = memberRepository.save(member);
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import rlguswn.JavaShop.dto.member.MemberSignUpForm;
 import rlguswn.JavaShop.dto.product.ProductRegisterForm;
+import rlguswn.JavaShop.enums.Role;
 import rlguswn.JavaShop.service.MemberService;
 import rlguswn.JavaShop.service.ProductService;
 
@@ -48,6 +49,9 @@ public class TestDataInitializer implements ApplicationRunner {
             form.setPassword(node.get("password").asText());
             form.setUsername(node.get("username").asText());
             form.setAddress(node.get("address").asText());
+
+            String roleStr = node.get("role").asText();
+            form.setRole(Role.valueOf(roleStr));
 
             memberService.signUp(form);
         }

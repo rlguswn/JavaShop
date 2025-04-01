@@ -1,11 +1,14 @@
 package rlguswn.JavaShop.dto.member;
 
+import rlguswn.JavaShop.enums.Role;
+
 public class MemberSignUpForm {
 
     private String email;
     private String password;
     private String username;
     private String address;
+    private Role role = Role.MEMBER;
 
     public String getEmail() {
         return email;
@@ -37,5 +40,13 @@ public class MemberSignUpForm {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

@@ -4,13 +4,15 @@
       "email": "test1@email.test",
       "username": "testuser1",
       "password": "password123",
-      "address": "testaddress1"
+      "address": "testaddress1",
+      "role": "ADMIN"
     },
     {
       "email": "test2@email.test",
       "username": "testuser2",
       "password": "password123",
-      "address": "testaddress2"
+      "address": "testaddress2",
+      "role": "MEMBER"
     }
   ],
 
