@@ -7,7 +7,9 @@
 </head>
 <body>
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
-    <h1>${message}</h1>
+    <div class="container">
+        <h1>${message}</h1>
+    </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>
 </body>
