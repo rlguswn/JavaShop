@@ -37,6 +37,10 @@ public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CustomerOrder> customerOrders = new ArrayList<>();
 
+    public boolean isAdmin() {
+        return this.role == Role.ADMIN;
+    }
+
     protected Member() {
     }
 
