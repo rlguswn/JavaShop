@@ -30,7 +30,6 @@ public class OrderItemService {
 
     public List<OrderItem> addOrderItem(CustomerOrder order, List<OrderItemRegisterForm> forms) {
         List<OrderItem> orderItems = new ArrayList<>();
-        BigDecimal totalPrice = new BigDecimal(0);
 
         for (OrderItemRegisterForm form : forms) {
             Product product = productService.getProductById(form.getProductId())
@@ -44,9 +43,7 @@ public class OrderItemService {
             );
             orderItemRepository.save(orderItem);
             orderItems.add(orderItem);
-            totalPrice = totalPrice.add(product.getPrice());
         }
-        order.setTotalPrice(totalPrice);
         customerOrderRepository.save(order);
 
         return orderItems;

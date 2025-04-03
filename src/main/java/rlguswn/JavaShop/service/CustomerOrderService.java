@@ -5,10 +5,12 @@ import org.springframework.stereotype.Service;
 import rlguswn.JavaShop.domain.Cart;
 import rlguswn.JavaShop.domain.CustomerOrder;
 import rlguswn.JavaShop.domain.Member;
+import rlguswn.JavaShop.domain.OrderItem;
 import rlguswn.JavaShop.dto.customerorder.OrderItemRegisterForm;
 import rlguswn.JavaShop.enums.OrderStatus;
 import rlguswn.JavaShop.repository.CustomerOrderRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +38,16 @@ public class CustomerOrderService {
         );
         customerOrderRepository.save(order);
         cartItemService.deleteByCartId(cart.getId());
-        orderItemService.addOrderItem(order, forms);
+
+        List<OrderItem> orderItems =  orderItemService.addOrderItem(order, forms);
+
+        BigDecimal totalPrice = orderItems.stream()
+                .map(item -> item.getProduct().getPrice().multiply(BigDecimal.valueOf(item.getQuantity())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        order.setTotalPrice(totalPrice);
+        customerOrderRepository.save(order);
+
         return order;
     }
 
