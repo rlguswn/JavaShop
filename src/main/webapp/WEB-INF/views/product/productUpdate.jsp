@@ -37,6 +37,7 @@
         </form>
 
         <script src="${pageContext.request.contextPath}/resources/js/productUpdate.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/numberInputFilter.js"></script>
     </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>

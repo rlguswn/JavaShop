@@ -18,10 +18,10 @@
             <input type="text" id="description" name="description" required>
 
             <label for="price">가격</label>
-            <input type="text" id="price" name="price" required>
+            <input type="number" id="price" name="price" required>
 
             <label for="quantity">수량</label>
-            <input type="text" id="quantity" name="quantity" required>
+            <input type="number" id="quantity" name="quantity" required>
 
             <label for="image">이미지</label>
             <input type="file" id="image" name="image">
@@ -30,6 +30,7 @@
         </form>
 
         <script src="${pageContext.request.contextPath}/resources/js/productRegister.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/numberInputFilter.js"></script>
     </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>
