@@ -42,13 +42,15 @@
             <h4>총 주문 금액: ${order.totalPrice} 원</h4>
 
             <c:if test="${order.status == 'PENDING'}">
-                <form action="${pageContext.request.contextPath}/order/${order.id}/complete" method="get">
-                    <button type="submit" class="btn btn-success">주문 확정</button>
-                </form>
+                <div class="button-group">
+                    <form action="${pageContext.request.contextPath}/order/${order.id}/complete" method="get">
+                        <button type="submit" class="btn btn-success">주문 확정</button>
+                    </form>
 
-                <form action="${pageContext.request.contextPath}/order/${order.id}/cancel" method="get">
-                    <button type="submit" class="btn btn-danger">주문 취소</button>
-                </form>
+                    <form action="${pageContext.request.contextPath}/order/${order.id}/cancel" method="get">
+                        <button type="submit" class="btn btn-danger">주문 취소</button>
+                    </form>
+                </div>
             </c:if>
         </c:if>
 

@@ -77,6 +77,13 @@ button:hover, .btn:hover {
     margin-top: 20px;
 }
 
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 20px;
+}
+
 /* 테이블 스타일 */
 table {
     width: 100%;
