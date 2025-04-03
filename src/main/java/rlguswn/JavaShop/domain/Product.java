@@ -40,6 +40,14 @@ public class Product {
     @JsonIgnore
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    public void decreaseQuantity(Long quantity) {
+        if (this.quantity >= quantity) {
+            this.quantity -= quantity;
+        } else {
+            throw new IllegalArgumentException("재고가 부족합니다.");
+        }
+    }
+
     protected Product() {
     }
 

@@ -32,6 +32,15 @@ public class CustomerOrder {
     @OneToMany(mappedBy = "customerOrder", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    public void completeOrder() {
+        if (this.status == OrderStatus.PENDING) {
+            for (OrderItem item : orderItems) {
+                item.getProduct().decreaseQuantity(item.getQuantity());
+            }
+            this.status = OrderStatus.COMPLETED;
+        }
+    }
+
     protected CustomerOrder() {
     }
 

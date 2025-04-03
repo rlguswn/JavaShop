@@ -20,15 +20,11 @@ import java.util.Optional;
 public class CustomerOrderController {
 
     private final CustomerOrderService customerOrderService;
-    private final OrderItemService orderItemService;
     private final MemberService memberService;
-    private final CartService cartService;
 
-    public CustomerOrderController(CustomerOrderService customerOrderService, OrderItemService orderItemService, MemberService memberService, CartService cartService) {
+    public CustomerOrderController(CustomerOrderService customerOrderService, MemberService memberService) {
         this.customerOrderService = customerOrderService;
-        this.orderItemService = orderItemService;
         this.memberService = memberService;
-        this.cartService = cartService;
     }
 
     @GetMapping
@@ -52,8 +48,7 @@ public class CustomerOrderController {
     @PostMapping("/register")
     public String registerOrder(Model model, @RequestBody List<OrderItemRegisterForm> forms) {
         Member member = memberService.getLoginMember();
-        CustomerOrder order = customerOrderService.createOrder(member);
-        orderItemService.addOrderItem(order, forms);
+        CustomerOrder order = customerOrderService.createOrder(member, forms);
         model.addAttribute("order", order);
         return "order/orderDetail";
     }
@@ -61,9 +56,9 @@ public class CustomerOrderController {
     @GetMapping("/{id}/register")
     public String registerOrderByCartId(Model model, @PathVariable Long id, @ModelAttribute List<OrderItemRegisterForm> forms) {
         Member member = memberService.getLoginMember();
-        Cart cart = cartService.getCartById(id).get();
-        CustomerOrder order = customerOrderService.createOrder(member);
-        orderItemService.addOrderItem(order, forms);
+
+        CustomerOrder order = customerOrderService.createOrder(member, forms);
+
         List<CustomerOrder> orders = customerOrderService.getOrderByMemberId(member.getId());
         model.addAttribute("orders", orders);
         return "order/orderList";
@@ -73,5 +68,11 @@ public class CustomerOrderController {
     public String cancelOrder(@PathVariable Long id) {
         customerOrderService.cancelOrderById(id);
         return "redirect:/order";
+    }
+
+    @GetMapping("/{id}/complete")
+    public String completeOrder(@PathVariable Long id) {
+        customerOrderService.completeOrderById(id);
+        return "redirect:/order/" + id;
     }
 }
