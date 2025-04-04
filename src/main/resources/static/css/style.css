@@ -25,12 +25,12 @@ body {
 }
 
 .nav-links {
-    list-style: none;  /* 리스트 점 제거 */
+    list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;  /* 가로 정렬 */
-    gap: 15px;  /* 메뉴 간격 */
-    margin-left: auto;  /* 오른쪽 정렬 */
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
 }
 
 .nav-links li {
@@ -51,9 +51,9 @@ body {
 /* 로고 스타일 */
 .logo {
     font-size: 24px;
-    font-weight: bold;  /* 두껍게 */
-    color: white;  /* 흰색 */
-    text-decoration: none;  /* 밑줄 제거 */
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
 }
 
 /* 버튼 스타일 */
@@ -102,4 +102,32 @@ table th, table td {
 
 table th {
     background-color: #f2f2f2;
+}
+
+/* 로딩 스피너 */
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

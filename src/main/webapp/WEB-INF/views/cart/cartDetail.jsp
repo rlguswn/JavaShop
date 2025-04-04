@@ -44,10 +44,14 @@
                 </tbody>
             </table>
 
+            <div id="spinner-overlay" class="spinner-overlay">
+                <div class="spinner"></div>
+            </div>
             <form id="orderRegister">
                 <button type="submit" class="btn btn-primary">주문하기</button>
             </form>
 
+            <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
             <script src="${pageContext.request.contextPath}/resources/js/orderRegister.js"></script>
         </c:if>
     </div>

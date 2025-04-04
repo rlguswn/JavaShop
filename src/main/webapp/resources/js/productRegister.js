@@ -1,6 +1,8 @@
 document.getElementById("productRegisterForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
+    window.showLoading();
+
     const formData = new FormData();
 
     formData.append("name", document.getElementById("name").value);
@@ -22,10 +24,12 @@ document.getElementById("productRegisterForm").addEventListener("submit", functi
     })
     .then(response => {
         console.log("Response:", response);
+        window.hideLoading();
         window.location.href = "/";
     })
     .catch(error => {
         console.error("Error:", error);
         alert("상품등록 중 문제가 발생했습니다.");
+        window.hideLoading();
     })
 })

@@ -34,6 +34,9 @@
         </table>
 
         <div class="mt-3">
+            <div id="spinner-overlay" class="spinner-overlay">
+                <div class="spinner"></div>
+            </div>
             <form id="cartItemRegister">
                 <input type="hidden" id="productId" name="productId" value="${product.id}">
                 <label for="quantity">수량:</label>
@@ -41,6 +44,7 @@
                 <button type="submit" class="btn btn-primary">장바구니에 추가</button>
             </form>
 
+            <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
             <script src="${pageContext.request.contextPath}/resources/js/cartItemRegister.js"></script>
         </div>
 

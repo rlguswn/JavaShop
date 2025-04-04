@@ -10,6 +10,9 @@
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
         <h2>상품 수정</h2>
+        <div id="spinner-overlay" class="spinner-overlay">
+            <div class="spinner"></div>
+        </div>
         <form id="productUpdateForm">
             <input type="hidden" id="id" name="id" value="${product.id}">
 
@@ -36,6 +39,7 @@
             <button type="submit">상품수정</button>
         </form>
 
+        <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/productUpdate.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/numberInputFilter.js"></script>
     </div>

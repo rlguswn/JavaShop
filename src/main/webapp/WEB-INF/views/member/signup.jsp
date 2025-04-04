@@ -10,15 +10,18 @@
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
         <h2>회원가입</h2>
+        <div id="spinner-overlay" class="spinner-overlay">
+            <div class="spinner"></div>
+        </div>
         <form id="signupForm">
             <label for="email">아이디</label>
-            <input type="text" id="email" name="email" required>
+            <input type="text" id="email" name="email" required autocomplete="username">
 
             <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
 
             <label for="username">이름</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username" required autocomplete="name">
 
             <label for="address">주소</label>
             <input type="text" id="address" name="address" required>
@@ -27,6 +30,7 @@
         </form>
 
         <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
     </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>

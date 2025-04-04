@@ -1,6 +1,8 @@
 document.getElementById("productUpdateForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
+    window.showLoading();
+
     const productId = document.getElementById("id").value;
     const formData = new FormData();
 
@@ -23,10 +25,12 @@ document.getElementById("productUpdateForm").addEventListener("submit", function
     })
     .then(response => {
         console.log("Response:", response);
+        window.hideLoading();
         window.location.href = `/product/${productId}`;
     })
     .catch(error => {
         console.error("Error:", error);
         alert("상품수정 중 문제가 발생했습니다.");
+        window.hideLoading();
     })
 })

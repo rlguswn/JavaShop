@@ -10,6 +10,9 @@
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
         <h2>로그인</h2>
+        <div id="spinner-overlay" class="spinner-overlay">
+            <div class="spinner"></div>
+        </div>
         <form id="loginForm">
             <label for="email">아이디</label>
             <input type="text" id="email" name="email" required>
@@ -20,6 +23,7 @@
             <button type="submit">로그인</button>
         </form>
 
+        <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
     </div>
 
