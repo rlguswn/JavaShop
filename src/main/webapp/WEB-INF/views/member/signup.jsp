@@ -10,10 +10,15 @@
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
         <h2>회원가입</h2>
+        <c:if test="${not empty message}">
+            <div class="alert alert-success">${message}</div>
+        </c:if>
+
         <div id="spinner-overlay" class="spinner-overlay">
             <div class="spinner"></div>
         </div>
-        <form id="signupForm">
+
+        <form action="${pageContext.request.contextPath}/signup" method="post">
             <label for="email">아이디</label>
             <input type="text" id="email" name="email" required autocomplete="username">
 
@@ -28,9 +33,6 @@
 
             <button type="submit">회원가입</button>
         </form>
-
-        <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
     </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>

@@ -11,6 +11,9 @@
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
         <h2>장바구니</h2>
+        <c:if test="${not empty message}">
+            <div class="alert alert-success">${message}</div>
+        </c:if>
 
         <c:if test="${empty cartItems}">
             <p>장바구니에 담긴 상품이 없습니다.</p>

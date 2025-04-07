@@ -12,6 +12,9 @@
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
         <h2>주문 상세</h2>
+        <c:if test="${not empty message}">
+            <div class="alert alert-success">${message}</div>
+        </c:if>
 
         <c:if test="${empty order.orderItems}">
             <p>주문한 상품이 없습니다.</p>

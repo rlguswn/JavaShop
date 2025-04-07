@@ -10,6 +10,10 @@
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
         <h2>상품 등록</h2>
+        <c:if test="${not empty message}">
+            <div class="alert alert-success">${message}</div>
+        </c:if>
+
         <div id="spinner-overlay" class="spinner-overlay">
             <div class="spinner"></div>
         </div>

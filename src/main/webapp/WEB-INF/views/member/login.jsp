@@ -10,10 +10,14 @@
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
         <h2>로그인</h2>
+        <c:if test="${not empty message}">
+            <div class="alert alert-success">${message}</div>
+        </c:if>
+
         <div id="spinner-overlay" class="spinner-overlay">
             <div class="spinner"></div>
         </div>
-        <form id="loginForm">
+        <form action="${pageContext.request.contextPath}/login" method="post">
             <label for="email">아이디</label>
             <input type="text" id="email" name="email" required>
 
@@ -22,9 +26,6 @@
 
             <button type="submit">로그인</button>
         </form>
-
-        <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
     </div>
 
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>

@@ -10,6 +10,9 @@
     <%@ include file="/WEB-INF/views/fragments/navbar.jsp" %>
     <div class="container">
         <h1>${message}</h1>
+        <c:if test="${not empty message}">
+            <div class="alert alert-success">${message}</div>
+        </c:if>
 
         <div class="button-container">
             <a href="/">홈으로 돌아가기</a>
