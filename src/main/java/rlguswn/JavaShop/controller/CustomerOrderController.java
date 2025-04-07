@@ -3,14 +3,11 @@ package rlguswn.JavaShop.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import rlguswn.JavaShop.domain.Cart;
 import rlguswn.JavaShop.domain.CustomerOrder;
 import rlguswn.JavaShop.domain.Member;
 import rlguswn.JavaShop.dto.customerorder.OrderItemRegisterForm;
-import rlguswn.JavaShop.service.CartService;
 import rlguswn.JavaShop.service.CustomerOrderService;
 import rlguswn.JavaShop.service.MemberService;
-import rlguswn.JavaShop.service.OrderItemService;
 
 import java.util.List;
 import java.util.Optional;
@@ -46,9 +43,9 @@ public class CustomerOrderController {
     }
 
     @PostMapping("/register")
-    public String registerOrder(Model model, @RequestBody List<OrderItemRegisterForm> forms) {
+    public String registerOrder(Model model) {
         Member member = memberService.getLoginMember();
-        CustomerOrder order = customerOrderService.createOrder(member, forms);
+        CustomerOrder order = customerOrderService.createOrder(member);
         model.addAttribute("order", order);
         return "order/orderDetail";
     }
@@ -57,7 +54,7 @@ public class CustomerOrderController {
     public String registerOrderByCartId(Model model, @PathVariable Long id, @ModelAttribute List<OrderItemRegisterForm> forms) {
         Member member = memberService.getLoginMember();
 
-        CustomerOrder order = customerOrderService.createOrder(member, forms);
+        CustomerOrder order = customerOrderService.createOrder(member);
 
         List<CustomerOrder> orders = customerOrderService.getOrderByMemberId(member.getId());
         model.addAttribute("orders", orders);

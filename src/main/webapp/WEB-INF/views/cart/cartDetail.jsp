@@ -20,42 +20,39 @@
         </c:if>
 
         <c:if test="${not empty cartItems}">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>상품명</th>
-                        <th>가격</th>
-                        <th>수량</th>
-                        <th>합계</th>
-                        <th>삭제</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="cartItem" items="${cartItems}" varStatus="status">
-                        <tr data-product-id="${cartItem.product.id}">
-                            <td>${cartItem.product.name}</td>
-                            <td>${cartItem.product.price}</td>
-                            <td class="quantity">${cartItem.quantity}</td>
-                            <td>${cartItem.product.price * cartItem.quantity}</td>
-                            <td>
-                                <form action="${pageContext.request.contextPath}/cart/${cartItem.id}/delete" method="get" style="display:inline;">
-                                    <button type="submit" class="btn btn-danger">삭제</button>
-                                </form>
-                            </td>
+            <form action="${pageContext.request.contextPath}/order/register" method="post">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>상품명</th>
+                            <th>가격</th>
+                            <th>수량</th>
+                            <th>합계</th>
+                            <th>삭제</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="cartItem" items="${cartItems}" varStatus="status">
+                            <input type="hidden" name="orderItems[${status.index}].productId" value="${cartItem.product.id}">
+                            <input type="hidden" name="orderItems[${status.index}].quantity" value="${cartItem.quantity}">
+                            <tr data-product-id="${cartItem.product.id}">
+                                <td>${cartItem.product.name}</td>
+                                <td>${cartItem.product.price}</td>
+                                <td class="quantity">${cartItem.quantity}</td>
+                                <td>${cartItem.product.price * cartItem.quantity}</td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/cart/${cartItem.id}/delete" class="btn btn-danger btn-sm delete-cart-item">삭제</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary">주문하기</button>
+            </form>
 
             <div id="spinner-overlay" class="spinner-overlay">
                 <div class="spinner"></div>
             </div>
-            <form id="orderRegister">
-                <button type="submit" class="btn btn-primary">주문하기</button>
-            </form>
-
-            <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
-            <script src="${pageContext.request.contextPath}/resources/js/orderRegister.js"></script>
         </c:if>
     </div>
 

@@ -20,12 +20,12 @@ public class CartItem {
     private Product product;
 
     @Column(nullable = false)
-    private int quantity;
+    private Long quantity;
 
     protected CartItem() {
     }
 
-    public CartItem(int quantity, Product product, Cart cart) {
+    public CartItem(Long quantity, Product product, Cart cart) {
         this.quantity = quantity;
         this.product = product;
         this.cart = cart;
@@ -55,11 +55,11 @@ public class CartItem {
         this.product = product;
     }
 
-    public int getQuantity() {
+    public Long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
 }

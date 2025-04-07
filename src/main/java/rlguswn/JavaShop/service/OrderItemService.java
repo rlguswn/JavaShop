@@ -2,14 +2,13 @@ package rlguswn.JavaShop.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import rlguswn.JavaShop.domain.CartItem;
 import rlguswn.JavaShop.domain.CustomerOrder;
 import rlguswn.JavaShop.domain.OrderItem;
 import rlguswn.JavaShop.domain.Product;
-import rlguswn.JavaShop.dto.customerorder.OrderItemRegisterForm;
 import rlguswn.JavaShop.repository.CustomerOrderRepository;
 import rlguswn.JavaShop.repository.OrderItemRepository;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,17 +27,16 @@ public class OrderItemService {
         this.customerOrderRepository = customerOrderRepository;
     }
 
-    public List<OrderItem> addOrderItem(CustomerOrder order, List<OrderItemRegisterForm> forms) {
+    public List<OrderItem> addOrderItem(CustomerOrder order, List<CartItem> cartItems) {
         List<OrderItem> orderItems = new ArrayList<>();
 
-        for (OrderItemRegisterForm form : forms) {
-            Product product = productService.getProductById(form.getProductId())
-                    .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
+        for (CartItem cartItem : cartItems) {
+            Product product = cartItem.getProduct();
 
             OrderItem orderItem = new OrderItem(
                     order,
                     product,
-                    form.getQuantity(),
+                    cartItem.getQuantity(),
                     product.getPrice()
             );
             orderItemRepository.save(orderItem);

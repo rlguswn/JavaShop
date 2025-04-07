@@ -17,7 +17,7 @@
         <div id="spinner-overlay" class="spinner-overlay">
             <div class="spinner"></div>
         </div>
-        <form id="productUpdateForm">
+        <form action="${pageContext.request.contextPath}/product/${product.id}/update" method="post" enctype="multipart/form-data">
             <input type="hidden" id="id" name="id" value="${product.id}">
 
             <label for="name">제품명</label>
@@ -43,8 +43,6 @@
             <button type="submit">상품수정</button>
         </form>
 
-        <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/productUpdate.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/numberInputFilter.js"></script>
     </div>
 

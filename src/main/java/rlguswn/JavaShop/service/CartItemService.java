@@ -34,7 +34,7 @@ public class CartItemService {
         return cartItemRepository.save(cartItem);
     }
 
-    public void updateCartItem(Long id, int quantity) {
+    public void updateCartItem(Long id, Long quantity) {
         cartItemRepository.findById(id).ifPresent(cartItem ->
                 cartItem.setQuantity(quantity));
     }

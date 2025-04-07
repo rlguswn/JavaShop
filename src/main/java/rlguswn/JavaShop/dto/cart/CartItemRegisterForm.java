@@ -2,14 +2,14 @@ package rlguswn.JavaShop.dto.cart;
 
 public class CartItemRegisterForm {
 
-    private int quantity;
+    private Long quantity;
     private Long productId;
 
-    public int getQuantity() {
+    public Long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
 

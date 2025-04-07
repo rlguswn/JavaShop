@@ -2,11 +2,7 @@ package rlguswn.JavaShop.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import rlguswn.JavaShop.domain.Cart;
-import rlguswn.JavaShop.domain.CustomerOrder;
-import rlguswn.JavaShop.domain.Member;
-import rlguswn.JavaShop.domain.OrderItem;
-import rlguswn.JavaShop.dto.customerorder.OrderItemRegisterForm;
+import rlguswn.JavaShop.domain.*;
 import rlguswn.JavaShop.enums.OrderStatus;
 import rlguswn.JavaShop.repository.CustomerOrderRepository;
 
@@ -30,25 +26,25 @@ public class CustomerOrderService {
         this.orderItemService = orderItemService;
     }
 
-    public CustomerOrder createOrder(Member member, List<OrderItemRegisterForm> forms) {
+    public CustomerOrder createOrder(Member member) {
         Cart cart = cartService.getCartByMemberId(member.getId()).get();
         CustomerOrder order = new CustomerOrder(
                 member,
                 OrderStatus.PENDING
         );
         customerOrderRepository.save(order);
-        cartItemService.deleteByCartId(cart.getId());
 
-        List<OrderItem> orderItems =  orderItemService.addOrderItem(order, forms);
+        List<CartItem> cartItems = cartItemService.getCartItemByCartId(cart.getId());
+        List<OrderItem> orderItems =  orderItemService.addOrderItem(order, cartItems);
 
         BigDecimal totalPrice = orderItems.stream()
                 .map(item -> item.getProduct().getPrice().multiply(BigDecimal.valueOf(item.getQuantity())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         order.setTotalPrice(totalPrice);
-        customerOrderRepository.save(order);
+        cartItemService.deleteByCartId(cart.getId());
 
-        return order;
+        return customerOrderRepository.save(order);
     }
 
     public Optional<CustomerOrder> getOrderById(Long id) {

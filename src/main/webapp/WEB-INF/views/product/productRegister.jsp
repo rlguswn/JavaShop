@@ -17,7 +17,7 @@
         <div id="spinner-overlay" class="spinner-overlay">
             <div class="spinner"></div>
         </div>
-        <form id="productRegisterForm">
+        <form action="${pageContext.request.contextPath}/product/register" method="post" enctype="multipart/form-data">
             <label for="name">제품명</label>
             <input type="text" id="name" name="name" required>
 
@@ -36,8 +36,6 @@
             <button type="submit">상품등록</button>
         </form>
 
-        <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/productRegister.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/numberInputFilter.js"></script>
     </div>
 
