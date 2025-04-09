@@ -41,7 +41,7 @@
             <div id="spinner-overlay" class="spinner-overlay">
                 <div class="spinner"></div>
             </div>
-            <form action="${pageContext.request.contextPath}/cart/add" method="post">
+            <form action="${pageContext.request.contextPath}/cart/add" method="post" onsubmit="return handleFormSubmit(event)">
                 <input type="hidden" id="productId" name="productId" value="${product.id}">
                 <label for="quantity">수량:</label>
                 <input type="number" id="quantity" name="quantity" value="1" min="1" max="${product.quantity}" required>
@@ -55,6 +55,7 @@
         </div>
     </div>
 
+    <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>
 </body>
 </html>

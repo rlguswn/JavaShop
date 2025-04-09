@@ -8,5 +8,11 @@ function hideLoading() {
     spinner.style.display = "none";
 }
 
-window.showLoading = showLoading;
-window.hideLoading = hideLoading;
+function handleFormSubmit(event) {
+    showLoading();
+
+    setTimeout(() => {
+        event.target.submit();
+    }, 500);
+    return true;
+}

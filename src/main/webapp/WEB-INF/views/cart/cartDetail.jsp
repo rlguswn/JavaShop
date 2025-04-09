@@ -20,7 +20,7 @@
         </c:if>
 
         <c:if test="${not empty cartItems}">
-            <form action="${pageContext.request.contextPath}/order/register" method="post">
+            <form action="${pageContext.request.contextPath}/order/register" method="post" onsubmit="return handleFormSubmit(event)">
                 <table class="table">
                     <thead>
                         <tr>
@@ -56,6 +56,7 @@
         </c:if>
     </div>
 
+    <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>
 </body>
 </html>

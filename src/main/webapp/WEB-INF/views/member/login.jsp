@@ -17,7 +17,7 @@
         <div id="spinner-overlay" class="spinner-overlay">
             <div class="spinner"></div>
         </div>
-        <form action="${pageContext.request.contextPath}/login" method="post">
+        <form action="${pageContext.request.contextPath}/login" method="post" onsubmit="return handleFormSubmit(event)">
             <label for="email">아이디</label>
             <input type="text" id="email" name="email" required>
 
@@ -28,6 +28,7 @@
         </form>
     </div>
 
+    <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
     <%@ include file="/WEB-INF/views/fragments/footer.jsp" %>
 </body>
 </html>
