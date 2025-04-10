@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,11 @@ public class Product {
         } else {
             throw new IllegalArgumentException("재고가 부족합니다.");
         }
+    }
+
+    public String formatCreatedAt() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일");
+        return this.createdAt.format(formatter);
     }
 
     protected Product() {

@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <th>가입일</th>
-                <td>${createdAt}</td>
+                <td>${member.formatCreatedAt()}</td>
             </tr>
         </table>
     </div>

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -35,16 +36,16 @@
                     <c:forEach var="order" items="${orders}">
                         <tr>
                             <td>${order.id}</td>
-                            <td>${order.createdAt}</td>
+                            <td>${order.formatCreatedAt()}</td>
                             <td>${order.status}</td>
-                            <td>${order.totalPrice} 원</td>
+                            <td><fmt:formatNumber value="${order.totalPrice}" type="number" maxFractionDigits="0"/>원</td>
                             <td>
                                 <c:forEach var="item" items="${order.orderItems}">
                                     ${item.product.name} x ${item.quantity}<br>
                                 </c:forEach>
                             </td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/order/${order.id}" class="btn btn-primary">상세 보기</a>
+                                <a href="${pageContext.request.contextPath}/order/${order.id}" class="btn-action">상세 보기</a>
                             </td>
                         </tr>
                     </c:forEach>

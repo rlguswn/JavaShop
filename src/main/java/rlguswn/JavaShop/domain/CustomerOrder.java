@@ -6,6 +6,7 @@ import rlguswn.JavaShop.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,11 @@ public class CustomerOrder {
             }
             this.status = OrderStatus.COMPLETED;
         }
+    }
+
+    public String formatCreatedAt() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일");
+        return this.createdAt.format(formatter);
     }
 
     protected CustomerOrder() {

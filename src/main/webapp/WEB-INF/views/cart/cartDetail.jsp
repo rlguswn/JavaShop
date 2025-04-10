@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -28,7 +29,7 @@
                             <th>가격</th>
                             <th>수량</th>
                             <th>합계</th>
-                            <th>삭제</th>
+                            <th>상품 제거</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,18 +37,18 @@
                             <input type="hidden" name="orderItems[${status.index}].productId" value="${cartItem.product.id}">
                             <input type="hidden" name="orderItems[${status.index}].quantity" value="${cartItem.quantity}">
                             <tr data-product-id="${cartItem.product.id}">
-                                <td>${cartItem.product.name}</td>
-                                <td>${cartItem.product.price}</td>
+                                <td><a href="${pageContext.request.contextPath}/product/${cartItem.product.id}">${cartItem.product.name}</a></td>
+                                <td><fmt:formatNumber value="${cartItem.product.price}" type="number" maxFractionDigits="0"/>원</td>
                                 <td class="quantity">${cartItem.quantity}</td>
-                                <td>${cartItem.product.price * cartItem.quantity}</td>
+                                <td><fmt:formatNumber value="${cartItem.product.price * cartItem.quantity}" type="number" maxFractionDigits="0"/>원</td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/cart/${cartItem.id}/delete" class="btn btn-danger btn-sm delete-cart-item">삭제</a>
+                                    <a href="${pageContext.request.contextPath}/cart/${cartItem.id}/delete" class="btn-action btn-delete" onclick="return confirm('정말로 제거하시겠습니까?');">제거</a>
                                 </td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-primary">주문하기</button>
+                <button type="submit" class="btn register-btn">주문하기</button>
             </form>
 
             <div id="spinner-overlay" class="spinner-overlay">
