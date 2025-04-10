@@ -43,6 +43,19 @@ public class TestDataInitializer implements ApplicationRunner {
 
         JsonNode jsonNode = objectMapper.readTree(inputStream);
 
+        for (JsonNode node : jsonNode.get("admins")) {
+            MemberSignUpForm form = new MemberSignUpForm();
+            form.setEmail(node.get("email").asText());
+            form.setPassword(node.get("password").asText());
+            form.setUsername(node.get("username").asText());
+            form.setAddress(node.get("address").asText());
+
+            String roleStr = node.get("role").asText();
+            form.setRole(Role.valueOf(roleStr));
+
+            memberService.signUp(form);
+        }
+
         for (JsonNode node : jsonNode.get("members")) {
             MemberSignUpForm form = new MemberSignUpForm();
             form.setEmail(node.get("email").asText());
