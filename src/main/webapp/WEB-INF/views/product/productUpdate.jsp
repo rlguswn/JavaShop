@@ -28,9 +28,15 @@
 
             <label for="price">가격</label>
             <input type="text" id="price" name="price" value="${product.price}" required>
+            <span>
+                <small>가격은 0 이상이어야 합니다.</small>
+            </span>
 
             <label for="quantity">수량</label>
             <input type="text" id="quantity" name="quantity" value="${product.quantity}" required>
+            <span>
+                <small>수량은 1 이상이어야 합니다.</small>
+            </span>
 
             <label for="image">이미지 변경</label>
             <input type="file" id="image" name="image">

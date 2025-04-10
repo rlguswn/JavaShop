@@ -25,7 +25,7 @@
                 <thead>
                     <tr>
                         <th>상품명</th>
-                        <th>가격</th>
+                        <th>가격 (단위: 원)</th>
                         <th>수량</th>
                         <th>합계</th>
                     </tr>
@@ -36,7 +36,7 @@
                             <td>${item.product.name}</td>
                             <td>${item.product.price}</td>
                             <td>${item.quantity}</td>
-                            <td>${item.product.price * item.quantity}</td>
+                            <td>${order.totalPrice} 원</td>
                         </tr>
                     </c:forEach>
                 </tbody>

@@ -19,7 +19,7 @@
             <thead>
                 <tr>
                     <th>상품명</th>
-                    <th>가격</th>
+                    <th>가격 (단위: 원)</th>
                     <th>재고</th>
                     <th>수정</th>
                     <th>삭제</th>
@@ -29,8 +29,8 @@
                 <c:forEach var="product" items="${products}">
                     <tr>
                         <td><a href="${pageContext.request.contextPath}/product/${product.id}">${product.name}</a></td>
-                        <td>${product.price} 원</td>
-                        <td>${product.quantity} 개</td>
+                        <td>${product.price}</td>
+                        <td>${product.quantity}</td>
                         <td><a href="${pageContext.request.contextPath}/product/${product.id}/update">수정</td>
                         <td><a href="${pageContext.request.contextPath}/product/${product.id}/delete" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a></td>
                     </tr>
