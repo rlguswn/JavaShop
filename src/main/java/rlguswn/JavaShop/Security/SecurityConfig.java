@@ -44,7 +44,8 @@ public class SecurityConfig {
                                 "/css/**",
                                 "/images/**",
                                 "/WEB-INF/views/**",
-                                "/resources/js/**"
+                                "/resources/js/**",
+                                "/test-login/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

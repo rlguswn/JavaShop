@@ -26,6 +26,11 @@
 
             <button type="submit">로그인</button>
         </form>
+        <div class="register-link">
+            <p>아직 회원이 아니신가요? <a href="${pageContext.request.contextPath}/register">회원가입</a></p>
+            <a href="${pageContext.request.contextPath}/test-login/admin">테스트 관리자 계정 로그인</a>
+            <a href="${pageContext.request.contextPath}/test-login/member">테스트 관리자 계정 로그인</a>
+        </div>
     </div>
 
     <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
