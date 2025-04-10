@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import rlguswn.JavaShop.enums.Role;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,11 @@ public class Member {
 
     public boolean isAdmin() {
         return this.role == Role.ADMIN;
+    }
+
+    public String formatCreatedAt() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일");
+        return this.createdAt.format(formatter);
     }
 
     protected Member() {

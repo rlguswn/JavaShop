@@ -47,6 +47,7 @@ public class MemberController {
     public String myPage(Model model) {
         Member member = memberService.getLoginMember();
         model.addAttribute("member", member);
+        model.addAttribute("createdAt", member.formatCreatedAt());
         return "member/mypage";
     }
 }
