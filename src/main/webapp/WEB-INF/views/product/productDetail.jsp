@@ -55,6 +55,8 @@
                 <a href="${pageContext.request.contextPath}/product/${product.id}/delete" class="btn-action btn-delete">삭제</a>
             </div>
         </div>
+
+        <a href="${pageContext.request.contextPath}/product" class="btn register-btn">상품 목록</a>
     </div>
 
     <script src="${pageContext.request.contextPath}/resources/js/loading.js"></script>
