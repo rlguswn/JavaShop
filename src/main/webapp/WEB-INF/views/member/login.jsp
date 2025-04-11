@@ -35,8 +35,10 @@
 
             <div class="register-link">
                 <p>아직 회원이 아니신가요? <a href="${pageContext.request.contextPath}/signup">회원가입</a></p>
-                <a href="${pageContext.request.contextPath}/test-login/admin">테스트 관리자 계정 로그인</a>
-                <a href="${pageContext.request.contextPath}/test-login/member">테스트 유저 계정 로그인</a>
+                <div class="button-group">
+                    <a href="${pageContext.request.contextPath}/test-login/admin" class="btn btn-action highlight">테스트 관리자<br>로그인</a>
+                    <a href="${pageContext.request.contextPath}/test-login/member" class="btn btn-action highlight">테스트 유저<br>로그인</a>
+                </div>
             </div>
         </div>
     </div>

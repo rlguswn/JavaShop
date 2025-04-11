@@ -224,3 +224,43 @@ table tbody tr:hover {
 .form-wrapper button[type="submit"]:hover {
     background-color: #45a049;
 }
+
+/* 테스트 로그인 링크/버튼 */
+.register-link .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.register-link .btn {
+    text-align: center;
+    font-weight: 500;
+    width: 200px;
+    padding: 10px 0;
+    border: 2px solid #4CAF50;
+    border-radius: 6px;
+}
+
+.register-link .btn:hover {
+    background-color: #2196F3;
+    color: white;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+    transform: translateY(-2px);
+}
+
+.highlight {
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(33, 150, 243, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(33, 150, 243, 0);
+    }
+}
