@@ -17,37 +17,50 @@
         <div id="spinner-overlay" class="spinner-overlay">
             <div class="spinner"></div>
         </div>
-        <form action="${pageContext.request.contextPath}/product/${product.id}/update" method="post" enctype="multipart/form-data" onsubmit="return handleFormSubmit(event)">
-            <input type="hidden" id="id" name="id" value="${product.id}">
 
-            <label for="name">제품명</label>
-            <input type="text" id="name" name="name" value="${product.name}" required>
+        <div class="form-wrapper">
+            <form action="${pageContext.request.contextPath}/product/${product.id}/update" method="post" enctype="multipart/form-data" onsubmit="return handleFormSubmit(event)">
+                <input type="hidden" id="id" name="id" value="${product.id}">
 
-            <label for="description">설명</label>
-            <input type="text" id="description" name="description" value="${product.description}" required>
+                <div class="form-group">
+                    <label for="name">제품명</label>
+                    <input type="text" id="name" name="name" value="${product.name}" required>
+                </div>
 
-            <label for="price">가격</label>
-            <input type="text" id="price" name="price" value="${product.price}" required>
-            <span>
-                <small>가격은 0 이상이어야 합니다.</small>
-            </span>
+                <div class="form-group">
+                    <label for="description">설명</label>
+                    <input type="text" id="description" name="description" value="${product.description}" required>
+                </div>
 
-            <label for="quantity">수량</label>
-            <input type="text" id="quantity" name="quantity" value="${product.quantity}" required>
-            <span>
-                <small>수량은 1 이상이어야 합니다.</small>
-            </span>
+                <div class="form-group">
+                    <label for="price">가격</label>
+                    <input type="number" id="price" name="price" value="${product.price}" required>
+                    <span>
+                        <small>가격은 0 이상이어야 합니다.</small>
+                    </span>
+                </div>
 
-            <label for="image">이미지 변경</label>
-            <input type="file" id="image" name="image">
-            <p>현재 이미지:
-                <c:forEach var="image" items="${product.productImages}">
-                    <img src="${image.imageData}" alt="상품 이미지" width="100">
-                </c:forEach>
-            </p>
+                <div class="form-group">
+                    <label for="quantity">수량</label>
+                    <input type="number" id="quantity" name="quantity" value="${product.quantity}" required>
+                    <span>
+                        <small>수량은 1 이상이어야 합니다.</small>
+                    </span>
+                </div>
 
-            <button type="submit">상품수정</button>
-        </form>
+                <div class="form-group">
+                    <label for="image">이미지 변경</label>
+                    <input type="file" id="image" name="image">
+                    <p>현재 이미지:
+                        <c:forEach var="image" items="${product.productImages}">
+                            <img src="${image.imageData}" alt="상품 이미지" width="100">
+                        </c:forEach>
+                    </p>
+                </div>
+
+                <button type="submit">상품수정</button>
+            </form>
+        </div>
 
         <script src="${pageContext.request.contextPath}/resources/js/numberInputFilter.js"></script>
     </div>
