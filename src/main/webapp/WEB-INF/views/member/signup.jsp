@@ -46,7 +46,7 @@
             <div class="register-link">
                 <p>이미 회원이신가요? <a href="${pageContext.request.contextPath}/login">로그인</a></p>
                 <a href="${pageContext.request.contextPath}/test-login/admin">테스트 관리자 계정 로그인</a>
-                <a href="${pageContext.request.contextPath}/test-login/member">테스트 관리자 계정 로그인</a>
+                <a href="${pageContext.request.contextPath}/test-login/member">테스트 유저 계정 로그인</a>
             </div>
         </div>
     </div>
