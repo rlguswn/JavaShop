@@ -117,6 +117,9 @@
 ## 테스트용 계정 로그인
 <img src="src/docs/gifs/테스트용계정로그인.gif" alt="테스트용계정로그인" width="600">
 
+## 권한이 없는 유저가 기능에 접근
+<img src="src/docs/gifs/권한이없는기능에접근.gif" alt="권한이없는기능에접근" width="600">
+
 ## 상품 등록
 <img src="src/docs/gifs/상품등록.gif" alt="상품등록" width="600">
 
