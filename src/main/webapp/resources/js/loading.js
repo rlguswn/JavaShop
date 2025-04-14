@@ -11,8 +11,9 @@ function hideLoading() {
 function handleFormSubmit(event) {
     showLoading();
 
-    setTimeout(() => {
-        event.target.submit();
-    }, 500);
+//    setTimeout(() => {
+//        event.target.submit();
+//    }, 500);
+//    return false;
     return true;
 }
