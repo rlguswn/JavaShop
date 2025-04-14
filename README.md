@@ -114,11 +114,11 @@
 ## 회원가입과 로그인
 <img src="src/docs/gifs/회원가입과로그인.gif" alt="회원가입과로그인" width="600">
 
+## 테스트용 계정 로그인
+<img src="src/docs/gifs/테스트용계정로그인.gif" alt="테스트용계정로그인" width="600">
+
 ## 상품 등록
 <img src="src/docs/gifs/상품등록.gif" alt="상품등록" width="600">
 
-## 장바구니에 담기
-<img src="src/docs/gifs/장바구니에담기.gif" alt="장바구니에 담기" width="600">
-
-## 장바구니 상품 주문
-<img src="src/docs/gifs/장바구니상품주문.gif" alt="장바구니상품주문" width="600">
+## 장바구니에 담고 주문
+<img src="src/docs/gifs/상품담고주문.gif" alt="상품담고주문" width="600">
