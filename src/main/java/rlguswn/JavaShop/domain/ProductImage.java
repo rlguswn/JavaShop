@@ -16,7 +16,7 @@ public class ProductImage {
     private Product product;
 
     @Lob
-    @Column(name = "product", nullable = false)
+    @Column(name = "image_data", nullable = false, columnDefinition = "MEDIUMBLOB")
     private byte[] imageData;
 
     @Column(nullable = false)
