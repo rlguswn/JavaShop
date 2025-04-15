@@ -47,7 +47,7 @@ public class CustomerOrderController {
         Member member = memberService.getLoginMember();
         CustomerOrder order = customerOrderService.createOrder(member);
         model.addAttribute("order", order);
-        return "order/orderDetail";
+        return "redirect:/order/" + order.getId();
     }
 
     @GetMapping("/{id}/register")
