@@ -26,6 +26,7 @@
                 <thead>
                     <tr>
                         <th>상품명</th>
+                        <th>상품 이미지</th>
                         <th>가격</th>
                         <th>수량</th>
                         <th>합계</th>
@@ -35,6 +36,13 @@
                     <c:forEach var="item" items="${order.orderItems}">
                         <tr>
                             <td><a href="${pageContext.request.contextPath}/product/${item.product.id}">${item.product.name}</td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/product/${item.product.id}">
+                                    <div style="text-align: center;">
+                                        <img src="/product/image/${item.product.id}" alt="상품 이미지" style="max-width: 300px; max-height: 300px; object-fit: contain; border: 1px solid #ccc; padding: 10px;" />
+                                    </div>
+                                </a>
+                            </td>
                             <td><fmt:formatNumber value="${item.product.price}" type="number" maxFractionDigits="0"/>원</td>
                             <td>${item.quantity}</td>
                             <td><fmt:formatNumber value="${item.product.price * item.quantity}" type="number" maxFractionDigits="0"/>원</td>

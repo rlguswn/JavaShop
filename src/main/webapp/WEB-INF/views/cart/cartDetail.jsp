@@ -26,6 +26,7 @@
                     <thead>
                         <tr>
                             <th>상품명</th>
+                            <th>상품 이미지</th>
                             <th>가격</th>
                             <th>수량</th>
                             <th>합계</th>
@@ -38,6 +39,13 @@
                             <input type="hidden" name="orderItems[${status.index}].quantity" value="${cartItem.quantity}">
                             <tr data-product-id="${cartItem.product.id}">
                                 <td><a href="${pageContext.request.contextPath}/product/${cartItem.product.id}">${cartItem.product.name}</a></td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/product/${cartItem.product.id}">
+                                        <div style="text-align: center;">
+                                            <img src="/product/image/${cartItem.product.id}" alt="상품 이미지" style="max-width: 300px; max-height: 300px; object-fit: contain; border: 1px solid #ccc; padding: 10px;" />
+                                        </div>
+                                    </a>
+                                </td>
                                 <td><fmt:formatNumber value="${cartItem.product.price}" type="number" maxFractionDigits="0"/>원</td>
                                 <td class="quantity">${cartItem.quantity}</td>
                                 <td><fmt:formatNumber value="${cartItem.product.price * cartItem.quantity}" type="number" maxFractionDigits="0"/>원</td>
