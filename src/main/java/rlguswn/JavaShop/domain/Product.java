@@ -34,8 +34,8 @@ public class Product {
     @JsonIgnore
     private List<CartItem> cartItems = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductImage> productImages = new ArrayList<>();
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ProductImage productImages;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
@@ -121,11 +121,11 @@ public class Product {
         this.cartItems = cartItems;
     }
 
-    public List<ProductImage> getProductImages() {
+    public ProductImage getProductImages() {
         return productImages;
     }
 
-    public void setProductImages(List<ProductImage> productImages) {
+    public void setProductImages(ProductImage productImages) {
         this.productImages = productImages;
     }
 

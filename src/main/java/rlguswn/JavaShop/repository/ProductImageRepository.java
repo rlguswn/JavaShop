@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface ProductImageRepository {
     ProductImage save(ProductImage productImage);
     Optional<ProductImage> findById(Long id);
-    List<ProductImage> findByProductId(Long productId);
+    Optional<ProductImage> findByProductId(Long productId);
     List<ProductImage> findAll();
     boolean deleteById(Long id);
 }

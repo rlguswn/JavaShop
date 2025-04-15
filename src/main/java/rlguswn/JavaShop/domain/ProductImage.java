@@ -10,7 +10,7 @@ public class ProductImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "product_id", nullable = false)
     @JsonIgnore
     private Product product;

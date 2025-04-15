@@ -26,7 +26,7 @@ public class ProductImageService {
         return productImageRepository.findById(id);
     }
 
-    public List<ProductImage> getProductImageByProductId(Long id) {
+    public Optional<ProductImage> getProductImageByProductId(Long id) {
         return productImageRepository.findByProductId(id);
     }
 
