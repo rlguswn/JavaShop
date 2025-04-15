@@ -60,10 +60,12 @@
                 <span>개</span>
                 <button type="submit" class="btn-action">장바구니에 추가</button>
             </form>
-            <div class="button-group">
-                <a href="${pageContext.request.contextPath}/product/${product.id}/update" class="btn-action">수정</a>
-                <a href="${pageContext.request.contextPath}/product/${product.id}/delete" class="btn-action btn-delete">삭제</a>
-            </div>
+            <sec:authorize access="hasRole('ADMIN')">
+                <div class="button-group">
+                    <a href="${pageContext.request.contextPath}/product/${product.id}/update" class="btn-action">수정</a>
+                    <a href="${pageContext.request.contextPath}/product/${product.id}/delete" class="btn-action btn-delete">삭제</a>
+                </div>
+            </sec:authorize>
         </div>
 
         <a href="${pageContext.request.contextPath}/product" class="btn register-btn">상품 목록</a>

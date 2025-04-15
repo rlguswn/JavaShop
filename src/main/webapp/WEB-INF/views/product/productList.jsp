@@ -23,7 +23,9 @@
                     <th>상품 이미지</th>
                     <th>가격</th>
                     <th>재고</th>
-                    <th>기타</th>
+                    <sec:authorize access="hasRole('ADMIN')">
+                        <th>기타</th>
+                    </sec:authorize>
                 </tr>
             </thead>
             <tbody>
@@ -39,10 +41,12 @@
                         </td>
                         <td><fmt:formatNumber value="${product.price}" type="number" maxFractionDigits="0"/>원</td>
                         <td>${product.quantity}</td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/product/${product.id}/update" class="btn-action">수정</a>
-                            <a href="${pageContext.request.contextPath}/product/${product.id}/delete" class="btn-action btn-delete" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
-                        </td>
+                        <sec:authorize access="hasRole('ADMIN')">
+                            <td>
+                                <a href="${pageContext.request.contextPath}/product/${product.id}/update" class="btn-action">수정</a>
+                                <a href="${pageContext.request.contextPath}/product/${product.id}/delete" class="btn-action btn-delete" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
+                            </td>
+                        </sec:authorize>
                     </tr>
                 </c:forEach>
             </tbody>
