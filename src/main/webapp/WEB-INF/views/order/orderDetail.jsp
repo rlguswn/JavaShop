@@ -37,9 +37,9 @@
                         <tr>
                             <td><a href="${pageContext.request.contextPath}/product/${item.product.id}">${item.product.name}</td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/product/${item.product.id}">
-                                    <div style="text-align: center;">
-                                        <img src="/product/image/${item.product.id}" alt="상품 이미지" style="max-width: 300px; max-height: 300px; object-fit: contain; border: 1px solid #ccc; padding: 10px;" />
+                                <a href="${pageContext.request.contextPath}/product/${cartItem.product.id}">
+                                    <div style="image-cell">
+                                        <img src="/product/image/${product.id}" alt="상품 이미지">
                                     </div>
                                 </a>
                             </td>

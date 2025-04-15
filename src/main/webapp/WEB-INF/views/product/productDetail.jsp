@@ -27,9 +27,11 @@
             <tr>
                 <th>상품 이미지</th>
                 <td>
-                    <div style="text-align: center;">
-                        <img src="/product/image/${product.id}" alt="상품 이미지" style="max-width: 300px; max-height: 300px; object-fit: contain; border: 1px solid #ccc; padding: 10px;" />
-                    </div>
+                    <a href="${pageContext.request.contextPath}/product/${cartItem.product.id}">
+                        <div style="image-cell">
+                            <img src="/product/image/${product.id}" alt="상품 이미지">
+                        </div>
+                    </a>
                 </td>
             </tr>
             <tr>
