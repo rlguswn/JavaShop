@@ -25,13 +25,24 @@ public class CartItemService {
         return cartItemRepository.findById(id);
     }
 
-    public CartItem addCartItem(CartItemRegisterForm form, Product product, Cart cart) {
-        CartItem cartItem = new CartItem(
+    public boolean addCartItem(CartItemRegisterForm form, Product product, Cart cart) {
+        List<CartItem> existingCartItems = cartItemRepository.findByCartId(cart.getId());
+
+        for (CartItem existingCartItem : existingCartItems) {
+            if (existingCartItem.getProduct().getId().equals(product.getId())) {
+                existingCartItem.setQuantity(existingCartItem.getQuantity() + form.getQuantity());
+                cartItemRepository.save(existingCartItem);
+                return true;
+            }
+        }
+
+        CartItem newCartItem = new CartItem(
                 form.getQuantity(),
                 product,
                 cart
         );
-        return cartItemRepository.save(cartItem);
+        cartItemRepository.save(newCartItem);
+        return false;
     }
 
     public void updateCartItem(Long id, Long quantity) {

@@ -3,6 +3,7 @@ package rlguswn.JavaShop.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import rlguswn.JavaShop.domain.Cart;
 import rlguswn.JavaShop.domain.CartItem;
 import rlguswn.JavaShop.domain.Member;
@@ -42,15 +43,18 @@ public class CartController {
     }
 
     @PostMapping("/add")
-    public String addCartItem(@ModelAttribute CartItemRegisterForm form) {
+    public String addCartItem(@ModelAttribute CartItemRegisterForm form, RedirectAttributes redirectAttributes) {
         Cart cart = cartService.getCartByMemberId(memberService.getLoginMember().getId())
                 .orElseThrow(() -> new IllegalArgumentException("장바구니가 존재하지 않습니다."));
         Product product = productService.getProductById(form.getProductId())
                 .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
         Long productId = product.getId();
 
-        CartItem cartItem = cartItemService.addCartItem(form, product, cart);
+        boolean updated = cartItemService.addCartItem(form, product, cart);
 
+        if (updated) {
+            redirectAttributes.addFlashAttribute("message", "장바구니에 이미 있는 상품입니다. 수량을 추가했습니다.");
+        }
         return "redirect:/product/" + productId;
     }
 
