@@ -18,6 +18,7 @@
 
         <c:if test="${empty cartItems}">
             <p>장바구니에 담긴 상품이 없습니다.</p>
+            <a href="${pageContext.request.contextPath}/product" class="btn-action">상품 목록으로 이동</a>
         </c:if>
 
         <c:if test="${not empty cartItems}">

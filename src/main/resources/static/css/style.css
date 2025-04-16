@@ -135,6 +135,18 @@ table img {
     align-items: center;
 }
 
+.form-group .image-cell {
+    width: 100%;
+    height: auto;
+}
+
+.form-group img {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    height: auto;
+}
+
 /* 상품 등록/수정/삭제 버튼 */
 .btn.register-btn {
     display: inline-block;

@@ -18,6 +18,8 @@
 
         <c:if test="${empty orders}">
             <p>주문 내역이 없습니다.</p>
+            <a href="${pageContext.request.contextPath}/product" class="btn-action">상품 목록으로 이동</a>
+            <a href="${pageContext.request.contextPath}/cart" class="btn-action">장바구니로 이동</a>
         </c:if>
 
         <c:if test="${not empty orders}">

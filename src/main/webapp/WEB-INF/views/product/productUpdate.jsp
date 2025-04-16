@@ -52,15 +52,17 @@
                     <label for="image">이미지 변경</label>
                     <input type="file" id="image" name="image">
                     <p>현재 이미지:
-                        <c:forEach var="image" items="${product.productImages}">
-                            <img src="${image.imageData}" alt="상품 이미지" width="100">
-                        </c:forEach>
+                        <div class="image-cell">
+                            <img src="/product/image/${product.id}" alt="상품 이미지">
+                        </div>
                     </p>
                 </div>
 
-                <button type="submit">상품수정</button>
+                <button type="submit" class="btn-action">상품수정</button>
             </form>
         </div>
+
+        <a href="${pageContext.request.contextPath}/product" class="btn register-btn">상품 목록</a>
 
         <script src="${pageContext.request.contextPath}/resources/js/numberInputFilter.js"></script>
     </div>

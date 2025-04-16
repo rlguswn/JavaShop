@@ -3,7 +3,7 @@
 
 <nav class="navbar">
     <div class="container">
-        <a href="${pageContext.request.contextPath}/" class="logo">쇼핑몰</a>
+        <a href="${pageContext.request.contextPath}/" class="logo">JavaShop</a>
         <ul class="nav-links">
             <li><a href="${pageContext.request.contextPath}/product">상품 목록</a></li>
             <li><a href="${pageContext.request.contextPath}/cart">장바구니</a></li>

@@ -55,6 +55,8 @@
             </form>
         </div>
 
+        <a href="${pageContext.request.contextPath}/product" class="btn register-btn">상품 목록</a>
+
         <script src="${pageContext.request.contextPath}/resources/js/numberInputFilter.js"></script>
     </div>
 
