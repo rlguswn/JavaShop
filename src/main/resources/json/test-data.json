@@ -45,61 +45,71 @@
       "name": "자바 스프링의 이해",
       "description": "스프링 프레임워크의 핵심 개념과 구조를 이해하고, 실무에서 바로 적용할 수 있는 예제들을 통해 학습할 수 있는 입문서입니다.",
       "price": 12800,
-      "quantity": 100
+      "quantity": 100,
+      "image": "java_spring.jpg"
     },
     {
       "name": "DRF 설명서",
       "description": "Django REST Framework를 활용한 API 개발의 모든 것을 담은 실전 가이드로, 초보자부터 중급자까지 단계별로 따라할 수 있도록 구성되어 있습니다.",
       "price": 15200,
-      "quantity": 200
+      "quantity": 200,
+      "image": "drf.jpg"
     },
     {
       "name": "자바 프로그래밍",
       "description": "객체지향 프로그래밍의 대표 언어인 Java를 처음부터 차근차근 배우고, 다양한 문제 해결 능력을 키울 수 있도록 돕는 핵심 프로그래밍 입문서입니다.",
       "price": 30000,
-      "quantity": 300
+      "quantity": 300,
+      "image": "java.jpg"
     },
     {
       "name": "스프링 부트 입문",
       "description": "스프링 부트를 처음 접하는 사람들을 위한 입문서로, 기본 개념부터 간단한 애플리케이션 제작까지 차근차근 안내합니다.",
       "price": 18000,
-      "quantity": 150
+      "quantity": 150,
+        "image": "spring_boot.jpg"
     },
     {
       "name": "리액트 완전 정복",
       "description": "React의 기초부터 고급 개념까지 상세하게 설명하고 있으며, 다양한 실습 예제를 통해 프론트엔드 개발 실력을 높일 수 있습니다.",
       "price": 22000,
-      "quantity": 120
+      "quantity": 120,
+      "image": "react.jpg"
     },
     {
       "name": "파이썬 알고리즘 문제집",
       "description": "기초 문법을 익힌 후 실력을 키우고 싶은 사람들을 위한 알고리즘 문제집으로, 실전 문제 중심의 구성입니다.",
       "price": 17500,
-      "quantity": 180
+      "quantity": 180,
+      "image": "python.jpg"
     },
     {
       "name": "데이터베이스 설계와 구축",
       "description": "데이터베이스의 이론적인 배경부터 ERD 설계, SQL 쿼리 작성까지 실무에 필요한 내용을 체계적으로 정리한 책입니다.",
       "price": 25000,
-      "quantity": 90
+      "quantity": 90,
+      "image": "db.jpg"
     },
     {
       "name": "네트워크 기초와 활용",
       "description": "컴퓨터 네트워크의 기본 구조와 프로토콜, 보안 개념을 쉽게 설명하며 실생활 예시를 통해 이해를 돕는 네트워크 입문서입니다.",
       "price": 19500,
-      "quantity": 110
+      "quantity": 110,
+      "image": "network.jpg"
     },
     {
       "name": "운영체제 이론 정복",
       "description": "프로세스, 스레드, 메모리 관리 등 운영체제의 핵심 개념을 깊이 있게 다루며, 컴퓨터공학 전공자에게 필수적인 내용으로 구성되었습니다.",
       "price": 27000,
-      "quantity": 95
+      "quantity": 95,
+      "image": "os.jpg"
     },
     {
       "name": "자바스크립트 마스터 가이드",
       "description": "JavaScript 언어의 핵심 문법과 브라우저 동작 방식, ES6 이후의 최신 문법을 체계적으로 정리한 종합 가이드입니다.",
       "price": 21000,
-      "quantity": 130
+      "quantity": 130,
+      "image": "js.jpg"
     }
   ]
 }

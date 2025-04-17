@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import rlguswn.JavaShop.dto.member.MemberSignUpForm;
@@ -15,6 +16,7 @@ import rlguswn.JavaShop.service.ProductService;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 
 @Component
 public class TestDataInitializer implements ApplicationRunner {
@@ -75,6 +77,22 @@ public class TestDataInitializer implements ApplicationRunner {
             form.setDescription(node.get("description").asText());
             form.setPrice(node.get("price").decimalValue());
             form.setQuantity(node.get("quantity").longValue());
+
+            if (node.has("image")) {
+                String imagePath = node.get("image").asText();
+                ClassPathResource imageResource = new ClassPathResource("static/images/" + imagePath);
+                try (InputStream is = imageResource.getInputStream()) {
+                    byte[] imageBytes = is.readAllBytes();
+                    String contentType = Files.probeContentType(imageResource.getFile().toPath());
+
+                    form.setImage(new MockMultipartFile(
+                            "image",
+                            imagePath,
+                            contentType,
+                            imageBytes
+                    ));
+                }
+            }
 
             productService.registerProduct(form);
         }
