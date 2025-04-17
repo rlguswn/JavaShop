@@ -39,7 +39,19 @@
                         <tr>
                             <td>${order.id}</td>
                             <td>${order.formatCreatedAt()}</td>
-                            <td>${order.status}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${order.status.toString() == 'PENDING'}">
+                                        <span class="order-status pending">주문 대기</span>
+                                    </c:when>
+                                    <c:when test="${order.status.toString() == 'COMPLETED'}">
+                                        <span class="order-status completed">주문 확정</span>
+                                    </c:when>
+                                    <c:when test="${order.status.toString() == 'CANCELED'}">
+                                        <span class="order-status canceled">주문 취소</span>
+                                    </c:when>
+                                </c:choose>
+                            </td>
                             <td><fmt:formatNumber value="${order.totalPrice}" type="number" maxFractionDigits="0"/>원</td>
                             <td>
                                 <c:forEach var="item" items="${order.orderItems}">

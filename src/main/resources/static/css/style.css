@@ -332,3 +332,23 @@ table img {
     min-width: 90px;
     text-align: center;
 }
+
+/* 주문 상태별 색상 */
+.order-status.pending {
+    background-color: #f0f0f0;
+    color: #777;
+    border-color: #ccc;
+}
+
+.order-status.completed {
+    background-color: #e6f4ea;
+    color: #2e7d32;
+    border-color: #a5d6a7;
+}
+
+.order-status.canceled {
+    background-color: #fdecea;
+    color: #c62828;
+    border-color: #f5c6cb;
+}
+

@@ -37,9 +37,9 @@
                         <tr>
                             <td><a href="${pageContext.request.contextPath}/product/${item.product.id}">${item.product.name}</td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/product/${cartItem.product.id}">
+                                <a href="${pageContext.request.contextPath}/product/${item.product.id}">
                                     <div style="image-cell">
-                                        <img src="/product/image/${cartItem.product.id}" alt="상품 이미지">
+                                        <img src="/product/image/${item.product.id}" alt="상품 이미지">
                                     </div>
                                 </a>
                             </td>
