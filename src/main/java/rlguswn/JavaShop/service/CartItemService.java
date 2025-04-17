@@ -64,4 +64,8 @@ public class CartItemService {
             cartItemRepository.deleteById(cartItem.getId());
         }
     }
+
+    public Long getCartItemCountByCartId(Long id) {
+        return cartItemRepository.findByCartId(id).stream().count();
+    }
 }

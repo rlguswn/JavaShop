@@ -8,7 +8,9 @@ import rlguswn.JavaShop.repository.CustomerOrderRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -75,5 +77,14 @@ public class CustomerOrderService {
                 .orElseThrow(() -> new IllegalArgumentException("주문을 찾을 수 없습니다."));
         order.completeOrder();
         return customerOrderRepository.save(order);
+    }
+
+    public Map<String, Long> getOrderCountByMemberId(Long id) {
+        List<CustomerOrder> orders = customerOrderRepository.findByMemberId(id);
+        return orders.stream()
+                .collect(Collectors.groupingBy(
+                        o -> o.getStatus().name(),  // Enum → String
+                        Collectors.counting()
+                ));
     }
 }

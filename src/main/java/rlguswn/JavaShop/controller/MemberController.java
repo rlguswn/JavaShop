@@ -6,16 +6,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rlguswn.JavaShop.domain.Member;
 import rlguswn.JavaShop.dto.member.MemberSignUpForm;
+import rlguswn.JavaShop.service.CartItemService;
+import rlguswn.JavaShop.service.CustomerOrderService;
 import rlguswn.JavaShop.service.MemberService;
+
+import java.util.Map;
 
 @Controller
 public class MemberController {
 
     private final MemberService memberService;
+    private final CartItemService cartItemService;
+    private final CustomerOrderService customerOrderService;
 
     @Autowired
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService, CartItemService cartItemService, CustomerOrderService customerOrderService) {
         this.memberService = memberService;
+        this.cartItemService = cartItemService;
+        this.customerOrderService = customerOrderService;
     }
 
     @GetMapping("/signup")
@@ -47,7 +55,13 @@ public class MemberController {
     public String myPage(Model model) {
         Member member = memberService.getLoginMember();
         model.addAttribute("member", member);
-        model.addAttribute("createdAt", member.formatCreatedAt());
+
+        Long cartItemCount = cartItemService.getCartItemCountByCartId(member.getCart().getId());
+        model.addAttribute("cartItemCount", cartItemCount);
+
+        Map<String, Long> orderCount = customerOrderService.getOrderCountByMemberId(member.getId());
+        model.addAttribute("orderCount", orderCount);
+
         return "member/mypage";
     }
 }

@@ -31,6 +31,26 @@
                 <th>가입일</th>
                 <td>${member.formatCreatedAt()}</td>
             </tr>
+            <tr>
+                <th>장바구니</th>
+                <td>${cartItemCount}개의 상품이 장바구니에서 대기중</td>
+            </tr>
+            <tr>
+                <th>주문 내역</th>
+                <td>
+                    <div class="order-stats">
+                        <div class="stat-box">
+                            주문 완료: <strong>${orderCount['COMPLETED'] != null ? orderCount['COMPLETED'] : 0}</strong>
+                        </div>
+                        <div class="stat-box">
+                            주문 대기: <strong>${orderCount['PENDING'] != null ? orderCount['PENDING'] : 0}</strong>
+                        </div>
+                        <div class="stat-box">
+                            주문 취소: <strong>${orderCount['CANCELED'] != null ? orderCount['CANCELED'] : 0}</strong>
+                        </div>
+                    </div>
+                </td>
+            </tr>
         </table>
     </div>
 

@@ -294,3 +294,41 @@ table img {
         box-shadow: 0 0 0 0 rgba(33, 150, 243, 0);
     }
 }
+
+/* 주문 통계 */
+.order-stats {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 30px 0;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.order-stats .stat-box {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.order-stats .stat-box strong {
+    font-size: 20px;
+    color: #4CAF50;
+    margin-left: 6px;
+}
+
+.order-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    border: 1px solid transparent;
+    min-width: 90px;
+    text-align: center;
+}
